@@ -1,0 +1,31 @@
+/** @mainpage GPIO
+
+The Arduino GPIO library has been developed to allow high performance
+digital pin access. Most access functions are compiled to a single
+instruction and execute in 1-2 clock cycles. The library functions are
+more than 10 times faster than the Arduino digital pin functions. In
+some cases as much as 60 times faster. Additional support classes are
+available for Shift Register Input/Output, and Asychronous Serial
+Output. These also demonstrate how the GPIO template class may be used
+to construct additional libraries.
+*/
+
+/** @page License
+
+Copyright (C) 2017, Mikael Patel
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this library; if not, write to the
+Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+Boston, MA  02111-1307  USA
+*/
