@@ -44,7 +44,7 @@ public:
   /**
    * Serialize given value according to the template bit order
    * parameter. Generate a positive clock pulse for each bit transfer.
-   * @param[in] value.
+   * @param[in] value to data input signal.
    */
   void operator<<(uint8_t value)
   {

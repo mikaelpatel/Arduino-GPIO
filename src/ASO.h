@@ -45,7 +45,7 @@ public:
   /**
    * Start the Asynchronous Serial Output (ASO) with the given
    * baudrate.
-   * @param[in] baudrate.
+   * @param[in] baudrate in bits per second.
    */
   void begin(uint32_t baudrate)
   {
@@ -57,7 +57,7 @@ public:
    * Write given byte to serial output with one start and stop
    * bit. Interrupts are disabled during the transmission. Returns
    * number of bytes transmitted(1).
-   * @param[in] byte.
+   * @param[in] byte to transmit.
    * @return number of bytes transmitted(1).
    */
   virtual size_t write(uint8_t byte)

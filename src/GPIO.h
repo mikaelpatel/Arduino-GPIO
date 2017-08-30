@@ -96,6 +96,16 @@ public:
   }
 
   /**
+   * Set pin to low(0) if the given value is zero otherwise high(1).
+   * @param[in] value to set pin, zero for low and no-zero for high.
+   */
+  void operator=(int value)
+    __attribute__((always_inline))
+  {
+    if (value) high(); else low();
+  }
+
+  /**
    * Generate pulse with given width in micro-seconds. Interrupts
    * are disabled while generating the pulse.
    * @param[in] width in micro-seconds.
@@ -110,16 +120,6 @@ public:
     _delay_loop_2(count);
     toggle();
     interrupts();
-  }
-
-  /**
-   * Set pin to low(0) if the given value is zero otherwise high(1).
-   * @param[in] value.
-   */
-  void operator=(int value)
-    __attribute__((always_inline))
-  {
-    if (value) high(); else low();
   }
 
 protected:

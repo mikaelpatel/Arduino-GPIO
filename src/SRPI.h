@@ -45,7 +45,7 @@ public:
    * Return deserialized value according to the template bit order
    * parameter. Generates a positive clock pulse for each bit
    * transfer.
-   * @param[out] value.
+   * @param[out] value from data input signal.
    */
   void operator>>(uint8_t& value)
   {
