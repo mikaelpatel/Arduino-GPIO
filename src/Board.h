@@ -19,49 +19,23 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#if defined(ARDUINO_AVR_UNO)
 /**
- * Arduino Uno board pins and definitions.
- *
- * @section Board
- * @code
- *                         Arduino Uno
- *                  -----              -------
- *                +-|(o)|--------------| USB |---+
- *                | |   |              |     |   |
- *                | -----              |     |   |
- *                |                    -------   |
- *                |                              |
- *                |                            []| SCL
- *                |                            []| SDA
- *                |                            []| AREF
- *                |                            []| GND
- *             NC |[]                          []| D13/SCK/LED
- *          IOREF |[]                          []| D12/MISO
- *          RESET |[]                          []| D11/MOSI/PWM5
- *            3V3 |[]                          []| D10/SS/PWM4
- *             5V |[]                          []| D9/PWM3
- *            GND |[]                          []| D8
- *            GND |[]                            |
- *            Vin |[]                          []| D7
- *                |                            []| D6/PWM2
- *         A0/D14 |[]                          []| D5/PWM1
- *         A1/D15 |[]                          []| D4
- *         A2/D16 |[]                          []| D3/EXT1/PWM0
- *         A3/D17 |[]                          []| D2/EXT0
- *     SDA/A4/D18 |[]           ICSP           []| D1/TX
- *     SCL/A5/D19 |[]           o-o-o*         []| D0/RX
- *                 \            o-o-o           /
- *                  +--------------------------+
- * @endcode
+ * Board pin values are constructed from port control register
+ * address (msb, bit 15..4) and pin bit position in control register
+ * (lsb, bit 3..0). This allows the pin values to be written
+ * directly in hexadecimal format.
  */
+#if defined(ARDUINO_AVR_UNO)						\
+ || defined(ARDUINO_AVR_DUEMILANOVE)					\
+ || defined(ARDUINO_AVR_NANO)						\
+ || defined(ARDUINO_AVR_MINI)						\
+ || defined(ARDUINO_AVR_ETHERNET)					\
+ || defined(ARDUINO_AVR_FIO)						\
+ || defined(ARDUINO_AVR_BT)						\
+ || defined(ARDUINO_AVR_LILYPAD)					\
+ || defined(ARDUINO_AVR_PRO)						\
+ || defined(ARDUINO_AVR_UNO_WIFI_DEV_ED)
 namespace BOARD {
-  /**
-   * Board pin values are constructed from port control register
-   * address (msb, bit 15..4) and pin bit position in control register
-   * (lsb, bit 3..0). This allows the pin values to be written
-   * directly in hexadecimal format.
-   */
   enum pin_t {
     D0 = 0x290,
     D1 = 0x291,
@@ -88,6 +62,6 @@ namespace BOARD {
   };
 };
 #else
-#error Board.h: unknown board
+#error Board.h: board not supported
 #endif
 #endif
