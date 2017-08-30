@@ -16,16 +16,14 @@ pin.input_pullup();  // Set pin to input mode with internal pullup resistor.
 pin.output();        // Set pin to output mode.
 
 bool state = pin;    // Read current pin state.
-if (pin) ...         // Use pin as boolean value in condition statement.
+if (pin) ...         // Use pin as boolean value in conditional expression.
+
+pin = state;         // Write new pin state.
 pin.low();           // Set pin low(0).
 pin.high();          // Set pin high(1).
 pin.toggle();        // Toggle pin state.
 pin.pulse(width);    // Generate pulse with given width in micro-seconds.
 
-pin = state;         // Write new pin state. Some examples:
-pin = HIGH;
-pin = LOW;
-pin = (i > 15);
 ```
 
 ## Classes
