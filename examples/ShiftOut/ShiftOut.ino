@@ -11,11 +11,11 @@ void setup()
 
 void loop()
 {
-  // 12 us, 81 kHz
+  // 12 us per bit, 81 kHz
   shiftOut(12, 13, LSBFIRST, 0xaa);
   delayMicroseconds(100);
 
-  // 1 us, 1 MHz
+  // 1 us per bit, 1 MHz
   outs << 0xaa;
   delayMicroseconds(100);
 }

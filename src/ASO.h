@@ -76,7 +76,7 @@ public:
 
   /**
    * @override{Stream}
-   * Always returns zero(0) as this stream is output only.
+   * Returns always zero(0) as this stream is output only.
    * @return zero(0).
    */
   virtual int available()
@@ -86,7 +86,7 @@ public:
 
   /**
    * @override{Stream}
-   * Always returns error code(-1) as this stream is output only.
+   * Returns always error code(-1) as this stream is output only.
    * @return error code(-1);
    */
   virtual int peek()
@@ -96,7 +96,7 @@ public:
 
   /**
    * @override{Stream}
-   * Always returns error code(-1) as this stream is output only.
+   * Returns always error code(-1) as this stream is output only.
    * @return error code(-1);
    */
   virtual int read()

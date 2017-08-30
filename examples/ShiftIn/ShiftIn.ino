@@ -13,11 +13,11 @@ void loop()
 {
   uint8_t value;
 
-  // 10.5 us, 95 kHz
+  // 10.5 us per bit, 95 kHz
   value = shiftIn(12, 13, LSBFIRST);
   delayMicroseconds(100);
 
-  // 0.6 us, 1.8 MHz
+  // 0.5625 us per bit, 1.8 MHz
   ins >> value;
   delayMicroseconds(100);
 }

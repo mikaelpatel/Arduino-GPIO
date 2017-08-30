@@ -9,6 +9,8 @@ void setup()
 
 void loop()
 {
-  led.toggle();
-  delay(500);
+  led = HIGH;
+  delay(1000);
+  led = LOW;
+  delay(1000);
 }

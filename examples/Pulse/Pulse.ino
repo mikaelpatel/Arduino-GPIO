@@ -9,7 +9,11 @@ void setup()
 
 void loop()
 {
-  for (int width = 0; width < 8; width++)
+  // Pulse width 1..10 us, not interrupted
+  for (int width = 1; width < 11; width++)
     led.pulse(width);
+
+  // Delay 10 us but observe with logic analyzer variation 10,15 us
+  // as timer interrupts will occur here
   delayMicroseconds(10);
 }
