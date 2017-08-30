@@ -6,7 +6,7 @@ GPIO<BOARD::D12> pin;
 void setup()
 {
   led.output();
-  pin.input(true);
+  pin.input_pullup();
 }
 
 void loop()

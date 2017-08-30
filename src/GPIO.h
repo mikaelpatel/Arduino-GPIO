@@ -31,15 +31,22 @@ template<BOARD::pin_t PIN>
 class GPIO {
 public:
   /**
-   * Set pin to input mode. Pullup resistor may be activated with
-   * given flag parameter. Deactivated by default.
-   * @param[in] pullup resistor flag (default false).
+   * Set pin to input mode.
    */
-  void input(bool pullup = false)
+  void input()
     __attribute__((always_inline))
   {
     SFR()->ddr &= ~MASK;
-    if (pullup) SFR()->port |= MASK;
+  }
+
+  /**
+   * Set pin to input mode and activate internal pullup resistor.
+   */
+  void input_pullup()
+    __attribute__((always_inline))
+  {
+    input();
+    high();
   }
 
   /**
@@ -86,6 +93,23 @@ public:
     __attribute__((always_inline))
   {
     SFR()->pin |= MASK;
+  }
+
+  /**
+   * Generate pulse with given width in micro-seconds. Interrupts
+   * are disabled while generating the pulse.
+   * @param[in] width in micro-seconds.
+   */
+  void pulse(uint16_t width)
+    __attribute__((always_inline))
+  {
+    if (width == 0) return;
+    uint16_t count = ((width * (F_CPU / 1000000)) / 4);
+    noInterrupts();
+    toggle();
+    _delay_loop_2(count);
+    toggle();
+    interrupts();
   }
 
   /**
