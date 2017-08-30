@@ -15,3 +15,12 @@ to construct additional libraries.
 * [Asynchronous Serial Output, ASO](./src/ASO.h)
 * [Shift Register Parallel Input, SRPI](./src/SRPI.h)
 * [Shift Register Parallel Output, SRPO](./src/SRPO.h)
+
+## Example Sketches
+
+* [Benchmark](./examples/Benchmark)
+* [Blink](./examples/Blink)
+* [Pulse](./examples/Pulse)
+* [ShiftIn](./examples/ShiftIn)
+* [ShiftOut](./examples/ShiftOut)
+* [SoftwareSerial](./examples/SoftwareSerial)
