@@ -8,6 +8,22 @@ available for Shift Register Input/Output, and Asychronous Serial
 Output. These also demonstrate how the GPIO template class may be used
 to construct additional libraries.
 
+```
+GPIO<BOARD:D4> pin;  // Construct pin instance.
+
+pin.input();         // Set pin to input mode.
+pin.input_pullup();  // Set pin to input mode with internal pullup resistor.
+pin.output();        // Set pin to output mode.
+
+bool state = pin;    // Return current pin state.
+pin.low();           // Set pin low(0).
+pin.high();          // Set pin high(1).
+pin.toggle();        // Toggle pin state.
+pin.pulse(width);    // Generate pulse with given width in micro-seconds.
+
+pin = state;         // Set pin to state.
+```
+
 ## Classes
 
 * [Boards](./src/Board.h)
