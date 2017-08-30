@@ -61,6 +61,49 @@ namespace BOARD {
     D21 = 0x267
   };
 };
+#elif defined(ARDUINO_AVR_YUN)						\
+ ||   defined(ARDUINO_AVR_LEONARDO)					\
+ ||   defined(ARDUINO_AVR_LEONARDO_ETH)					\
+ ||   defined(ARDUINO_AVR_MICRO)					\
+ ||   defined(ARDUINO_AVR_ESPLORA)					\
+ ||   defined(ARDUINO_AVR_LILYPAD_USB)					\
+ ||   defined(ARDUINO_AVR_ROBOT_CONTROL)				\
+ ||   defined(ARDUINO_AVR_ROBOT_MOTOR)
+namespace BOARD {
+  enum pin_t {
+    D0 = 0x292,
+    D1 = 0x293,
+    D2 = 0x291,
+    D3 = 0x290,
+    D4 = 0x294,
+    D5 = 0x266,
+    D6 = 0x297,
+    D7 = 0x2c6,
+    D8 = 0x234,
+    D9 = 0x235,
+    D10 = 0x236,
+    D11 = 0x237,
+    D12 = 0x296,
+    D13 = 0x267,
+    D14 = 0x233,
+    D15 = 0x231,
+    D16 = 0x232,
+    D17 = 0x230,
+    D18 = 0x2f7,
+    D19 = 0x2f6,
+    D20 = 0x2f5,
+    D21 = 0x2f4,
+    D22 = 0x2f1,
+    D23 = 0x2f0,
+    D24 = 0x294,
+    D25 = 0x297,
+    D26 = 0x234,
+    D27 = 0x235,
+    D28 = 0x236,
+    D29 = 0x296,
+    D30 = 0x295
+  };
+};
 #else
 #error Board.h: board not supported
 #endif
