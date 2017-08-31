@@ -11,7 +11,7 @@ Input (SRPI) and Output (SRPO), and Asychronous Serial Output
 (ASO). These also demonstrate how the GPIO template class may be used
 to construct additional classes and libraries.
 
-Version: 1.0.3
+Version: 1.1.0
 */
 
 /** @page License

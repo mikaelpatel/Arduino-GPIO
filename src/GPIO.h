@@ -1,6 +1,6 @@
 /**
  * @file GPIO.h
- * @version 1.0
+ * @version 1.1
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -22,9 +22,9 @@
 #include "Board.h"
 
 /**
- * General Purpose Digital I/O pin template class. Highly opimized
- * pin access. PIN address is 12-bit control register address (msb)
- * and 4-bit bit number (lsb). See Board.h for definitions.
+ * General Purpose Digital I/O pin template class. Highly optimized
+ * pin access. The PIN address is 12-bit control register address
+ * (msb) and 4-bit bit number (lsb). See Board.h for definitions.
  * @param[in] PIN board pin definition.
  */
 template<BOARD::pin_t PIN>
@@ -62,10 +62,20 @@ public:
    * Return current pin state.
    * @return state.
    */
-  operator bool()
+  bool read()
     __attribute__((always_inline))
   {
     return ((SFR()->pin & MASK) != 0);
+  }
+
+  /**
+   * Return current pin state. Shorthand for read().
+   * @return state.
+   */
+  operator bool()
+    __attribute__((always_inline))
+  {
+    return (read());
   }
 
   /**
@@ -96,13 +106,25 @@ public:
   }
 
   /**
-   * Set pin to low(0) if the given value is zero otherwise high(1).
-   * @param[in] value to set pin, zero for low and no-zero for high.
+   * Set pin to given state. Non-zero value will set the pin high(1).
+   * Zero value will set the pin low(0).
+   * @param[in] value to set pin.
+   */
+  void write(int value)
+    __attribute__((always_inline))
+  {
+    if (value) high(); else low();
+  }
+
+  /**
+   * Set pin to given state. Non-zero value will set the pin high(1).
+   * Zero value will set the pin low(0). Sorthand for write().
+   * @param[in] value to set pin.
    */
   void operator=(int value)
     __attribute__((always_inline))
   {
-    if (value) high(); else low();
+    write(value);
   }
 
   /**
@@ -123,7 +145,7 @@ public:
   }
 
 protected:
-  /** General Purpose Digital I/O control registers. */
+  /** General Purpose Digital I/O Control Registers. */
   struct gpio_reg_t {
     volatile uint8_t pin;	//!< Port Input Pins.
     volatile uint8_t ddr;	//!< Data Direction Register.
@@ -131,7 +153,7 @@ protected:
   };
 
   /**
-   * Return pointer to control registers.
+   * Return pointer to pin control registers.
    * @return pointer.
    */
   gpio_reg_t* SFR()
@@ -140,7 +162,7 @@ protected:
     return (gpio_reg_t*) (PIN >> 4);
   }
 
-  /** Bit position mask for control registers. */
+  /** Pin bit position mask for control registers. */
   static const uint8_t MASK = _BV(PIN & 0xf);
 };
 #endif

@@ -10,18 +10,25 @@ to construct additional libraries.
 
 ```
 GPIO<BOARD:D4> pin;  // Construct pin instance.
+bool state;
 
 pin.input();         // Set pin to input mode.
 pin.input_pullup();  // Set pin to input mode with internal pullup resistor.
 pin.output();        // Set pin to output mode.
 
-bool state = pin;    // Read current pin state.
+state = pin.read();  // Read current pin state.
+state = pin;         // Shorthand for read.
 if (pin) ...         // Use pin as boolean value in conditional expression.
+while (!pin) ...     // Await pin state.
 
-pin = state;         // Write new pin state.
+pin.write(state);    // Write new pin state.
+pin = state;         // Shorthand for write.
+
 pin.low();           // Set pin low(0).
 pin.high();          // Set pin high(1).
+
 pin.toggle();        // Toggle pin state.
+
 pin.pulse(width);    // Generate pulse with given width in micro-seconds.
 
 ```

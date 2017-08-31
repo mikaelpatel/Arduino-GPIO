@@ -23,8 +23,8 @@
 
 /**
  * Asynchronous Serial Output (ASO) template class using GPIO.
- * Acts as an output only Stream. May be used with baudrates up to
- * 250.000 bps.
+ * Acts as an output only Stream, i.e. SoftwareSerial. May be used
+ * with baudrates up to 250.000 bps.
  * @param[in] TX_PIN board pin for transmit signal.
  */
 template<BOARD::pin_t TX_PIN>
