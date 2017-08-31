@@ -1,13 +1,17 @@
-/** @mainpage GPIO
+/** @mainpage Arduino-GPIO
 
 The Arduino GPIO library has been developed to allow high performance
 digital pin access. Most access functions are compiled to a single
 instruction and execute in 1-2 clock cycles. The library functions are
 more than 10 times faster than the Arduino digital pin functions. In
-some cases as much as 60 times faster. Additional support classes are
-available for Shift Register Input/Output, and Asychronous Serial
-Output. These also demonstrate how the GPIO template class may be used
-to construct additional libraries.
+some cases as much as 60 times faster.
+
+Additional support classes are available for Shift Register Parallel
+Input (SRPI) and Output (SRPO), and Asychronous Serial Output
+(ASO). These also demonstrate how the GPIO template class may be used
+to construct additional classes and libraries.
+
+Version: 1.0.3
 */
 
 /** @page License
