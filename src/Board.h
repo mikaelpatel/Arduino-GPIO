@@ -35,30 +35,30 @@
  || defined(ARDUINO_AVR_LILYPAD)					\
  || defined(ARDUINO_AVR_PRO)						\
  || defined(ARDUINO_AVR_UNO_WIFI_DEV_ED)
-namespace BOARD {
+class BOARD {
+public:
   enum pin_t {
-    D0 = 0x290,
-    D1 = 0x291,
-    D2 = 0x292,
-    D3 = 0x293,
-    D4 = 0x294,
-    D5 = 0x295,
-    D6 = 0x296,
-    D7 = 0x297,
-    D8 = 0x230,
-    D9 = 0x231,
-    D10 = 0x232,
-    D11 = 0x233,
-    D12 = 0x234,
-    D13 = 0x235,
-    D14 = 0x260,
-    D15 = 0x261,
-    D16 = 0x262,
-    D17 = 0x263,
-    D18 = 0x264,
-    D19 = 0x265,
-    D20 = 0x266,
-    D21 = 0x267
+    D0 = 0x290,			//!< PIND:0
+    D1 = 0x291,			//!< PIND:1
+    D2 = 0x292,			//!< PIND:2
+    D3 = 0x293,			//!< PIND:3
+    D4 = 0x294,			//!< PIND:4
+    D5 = 0x295,			//!< PIND:5
+    D6 = 0x296,			//!< PIND:6
+    D7 = 0x297,			//!< PIND:7
+    D8 = 0x230,			//!< PINB:0
+    D9 = 0x231,			//!< PINB:1
+    D10 = 0x232,		//!< PINB:2
+    D11 = 0x233,		//!< PINB:3
+    D12 = 0x234,		//!< PINB:4
+    D13 = 0x235,		//!< PINB:5
+    D14 = 0x260,		//!< PINC:0
+    D15 = 0x261,		//!< PINC:1
+    D16 = 0x262,		//!< PINC:2
+    D17 = 0x263,		//!< PINC:3
+    D18 = 0x264,		//!< PINC:4
+    D19 = 0x265,		//!< PINC:5
+    D20 = 0x266			//!< PINC:6
   };
 };
 #elif defined(ARDUINO_AVR_YUN)						\
@@ -69,39 +69,40 @@ namespace BOARD {
  ||   defined(ARDUINO_AVR_LILYPAD_USB)					\
  ||   defined(ARDUINO_AVR_ROBOT_CONTROL)				\
  ||   defined(ARDUINO_AVR_ROBOT_MOTOR)
-namespace BOARD {
+class BOARD {
+public:
   enum pin_t {
-    D0 = 0x292,
-    D1 = 0x293,
-    D2 = 0x291,
-    D3 = 0x290,
-    D4 = 0x294,
-    D5 = 0x266,
-    D6 = 0x297,
-    D7 = 0x2c6,
-    D8 = 0x234,
-    D9 = 0x235,
-    D10 = 0x236,
-    D11 = 0x237,
-    D12 = 0x296,
-    D13 = 0x267,
-    D14 = 0x233,
-    D15 = 0x231,
-    D16 = 0x232,
-    D17 = 0x230,
-    D18 = 0x2f7,
-    D19 = 0x2f6,
-    D20 = 0x2f5,
-    D21 = 0x2f4,
-    D22 = 0x2f1,
-    D23 = 0x2f0,
-    D24 = 0x294,
-    D25 = 0x297,
-    D26 = 0x234,
-    D27 = 0x235,
-    D28 = 0x236,
-    D29 = 0x296,
-    D30 = 0x295
+    D0 = 0x292,			//!< PIND:2
+    D1 = 0x293,			//!< PIND:3
+    D2 = 0x291,			//!< PIND:1
+    D3 = 0x290,			//!< PIND:0
+    D4 = 0x294,			//!< PIND:4
+    D5 = 0x266,			//!< PINC:6
+    D6 = 0x297,			//!< PIND:7
+    D7 = 0x2c6,			//!< PINE:6
+    D8 = 0x234,			//!< PINB:4
+    D9 = 0x235,			//!< PINB:5
+    D10 = 0x236,		//!< PINB:6
+    D11 = 0x237,		//!< PINB:7
+    D12 = 0x296,		//!< PIND:6
+    D13 = 0x267,		//!< PINC:7
+    D14 = 0x233,		//!< PINB:3
+    D15 = 0x231,		//!< PINB:1
+    D16 = 0x232,		//!< PINB:2
+    D17 = 0x230,		//!< PINB:0
+    D18 = 0x2f7,		//!< PINF:7
+    D19 = 0x2f6,		//!< PINF:6
+    D20 = 0x2f5,		//!< PINF:5
+    D21 = 0x2f4,		//!< PINF:4
+    D22 = 0x2f1,		//!< PINF:1
+    D23 = 0x2f0,		//!< PINF:0
+    D24 = 0x294,		//!< PIND:4
+    D25 = 0x297,		//!< PIND:7
+    D26 = 0x234,		//!< PINB:4
+    D27 = 0x235,		//!< PINB:5
+    D28 = 0x236,		//!< PINB:6
+    D29 = 0x296,		//!< PIND:6
+    D30 = 0x295			//!< PIND:5
   };
 };
 #else
