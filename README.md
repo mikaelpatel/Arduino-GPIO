@@ -23,9 +23,8 @@ while (!pin) ...     // Await pin state.
 
 pin.write(state);    // Write new pin state.
 pin = state;         // Shorthand for write.
-
-pin.low();           // Set pin low(0).
-pin.high();          // Set pin high(1).
+pin.high();          // Shorthand for write(HIGH).
+pin.low();           // Shorthand for write(LOW).
 
 pin.toggle();        // Toggle pin state.
 
