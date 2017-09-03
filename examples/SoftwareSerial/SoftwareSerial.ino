@@ -1,7 +1,7 @@
 #include "GPIO.h"
-#include "ASO.h"
+#include "Software/Serial.h"
 
-ASO<BOARD::D13> outs;
+Software::Serial<BOARD::D13> outs;
 
 void setup()
 {

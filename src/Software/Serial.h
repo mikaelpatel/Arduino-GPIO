@@ -1,5 +1,5 @@
 /**
- * @file ASO.h
+ * @file Software/Serial.h
  * @version 1.0
  *
  * @section License
@@ -16,26 +16,26 @@
  * Lesser General Public License for more details.
  */
 
-#ifndef ASO_H
-#define ASO_H
+#ifndef SOFTWARE_SERIAL_H
+#define SOFTWARE_SERIAL_H
 
 #include "GPIO.h"
 
 /**
- * Asynchronous Serial Output (ASO) template class using GPIO.
- * Acts as an output only Stream, i.e. SoftwareSerial. May be used
- * with baudrates up to 250.000 bps.
+ * Output only Software Serial template class using GPIO.
+ * May be used with baudrates up to 250.000 bps.
  * @param[in] TX_PIN board pin for transmit signal.
  */
+namespace Software {
 template<BOARD::pin_t TX_PIN>
-class ASO : public Stream {
+class Serial : public ::Stream {
 public:
   /**
-   * Construct Asynchronous Serial Output (ASO) instance with
+   * Construct Output only Software Serial instance with
    * given template parameters. Initiate GPIO transit pin
    * to output mode and set default baudrate (57600 bps).
    */
-  ASO() :
+  Serial() :
     m_count(((F_CPU / 57600) / 4) - 4)
   {
     m_tx.output();
@@ -111,5 +111,5 @@ protected:
   /** Bit delay counter for given baudrate. */
   uint16_t m_count;
 };
-
+};
 #endif
