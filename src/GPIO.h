@@ -1,6 +1,6 @@
 /**
  * @file GPIO.h
- * @version 1.1
+ * @version 1.2
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
