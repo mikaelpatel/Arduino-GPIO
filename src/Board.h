@@ -1,6 +1,6 @@
 /**
  * @file Board.h
- * @version 1.0
+ * @version 1.1
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -46,12 +46,14 @@ public:
     D5 = 0x295,			//!< PIND:5
     D6 = 0x296,			//!< PIND:6
     D7 = 0x297,			//!< PIND:7
+
     D8 = 0x230,			//!< PINB:0
     D9 = 0x231,			//!< PINB:1
     D10 = 0x232,		//!< PINB:2
     D11 = 0x233,		//!< PINB:3
     D12 = 0x234,		//!< PINB:4
     D13 = 0x235,		//!< PINB:5
+
     D14 = 0x260,		//!< PINC:0
     D15 = 0x261,		//!< PINC:1
     D16 = 0x262,		//!< PINC:2
@@ -80,29 +82,25 @@ public:
     D5 = 0x266,			//!< PINC:6
     D6 = 0x297,			//!< PIND:7
     D7 = 0x2c6,			//!< PINE:6
+
     D8 = 0x234,			//!< PINB:4
     D9 = 0x235,			//!< PINB:5
     D10 = 0x236,		//!< PINB:6
     D11 = 0x237,		//!< PINB:7
     D12 = 0x296,		//!< PIND:6
     D13 = 0x267,		//!< PINC:7
-    D14 = 0x233,		//!< PINB:3
-    D15 = 0x231,		//!< PINB:1
-    D16 = 0x232,		//!< PINB:2
-    D17 = 0x230,		//!< PINB:0
-    D18 = 0x2f7,		//!< PINF:7
-    D19 = 0x2f6,		//!< PINF:6
-    D20 = 0x2f5,		//!< PINF:5
-    D21 = 0x2f4,		//!< PINF:4
-    D22 = 0x2f1,		//!< PINF:1
-    D23 = 0x2f0,		//!< PINF:0
-    D24 = 0x294,		//!< PIND:4
-    D25 = 0x297,		//!< PIND:7
-    D26 = 0x234,		//!< PINB:4
-    D27 = 0x235,		//!< PINB:5
-    D28 = 0x236,		//!< PINB:6
-    D29 = 0x296,		//!< PIND:6
-    D30 = 0x295			//!< PIND:5
+
+    D14 = 0x2f7,		//!< PINF:7
+    D15 = 0x2f6,		//!< PINF:6
+    D16 = 0x2f5,		//!< PINF:5
+    D17 = 0x2f4,		//!< PINF:4
+    D18 = 0x2f1,		//!< PINF:1
+    D19 = 0x2f0,		//!< PINF:0
+
+    D20 = 0x233,		//!< PINB:3
+    D21 = 0x231,		//!< PINB:1
+    D22 = 0x232,		//!< PINB:2
+    D23 = 0x230			//!< PINB:0
   };
 };
 #else
