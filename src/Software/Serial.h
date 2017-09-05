@@ -43,13 +43,22 @@ public:
   }
 
   /**
-   * Start the Asynchronous Serial Output (ASO) with the given
+   * Start the Output only Software Serial with the given
    * baudrate.
    * @param[in] baudrate in bits per second.
    */
   void begin(uint32_t baudrate)
   {
     m_count = ((F_CPU / baudrate) / 4) - 4;
+  }
+
+  /**
+   * Check if Serial is ready (see Arduino/HardwareSerial).
+   * @return true(1);
+   */
+  operator bool()
+  {
+    return (true);
   }
 
   /**

@@ -1,7 +1,11 @@
 #include "GPIO.h"
 #include "Software/Serial.h"
 
+#if defined(ARDUINO_attiny)
+Software::Serial<BOARD::D0> outs;
+#else
 Software::Serial<BOARD::D13> outs;
+#endif
 
 void setup()
 {

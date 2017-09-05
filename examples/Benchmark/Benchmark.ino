@@ -1,7 +1,12 @@
 #include "GPIO.h"
 
+#if defined(ARDUINO_attiny)
+GPIO<BOARD::D0> led;
+GPIO<BOARD::D1> pin;
+#else
 GPIO<BOARD::D13> led;
 GPIO<BOARD::D12> pin;
+#endif
 
 void setup()
 {

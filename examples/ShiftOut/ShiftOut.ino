@@ -1,7 +1,11 @@
 #include "GPIO.h"
 #include "SRPO.h"
 
+#if defined(ARDUINO_attiny)
+SRPO<BOARD::D0, BOARD::D1, LSBFIRST> outs;
+#else
 SRPO<BOARD::D12, BOARD::D13, LSBFIRST> outs;
+#endif
 
 void setup()
 {

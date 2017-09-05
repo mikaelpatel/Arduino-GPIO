@@ -1,7 +1,11 @@
 #include "GPIO.h"
 #include "SRPI.h"
 
+#if defined(ARDUINO_attiny)
+SRPI<BOARD::D0, BOARD::D1, LSBFIRST> ins;
+#else
 SRPI<BOARD::D12, BOARD::D13, LSBFIRST> ins;
+#endif
 
 void setup()
 {
