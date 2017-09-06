@@ -35,6 +35,40 @@
  || defined(ARDUINO_AVR_LILYPAD)					\
  || defined(ARDUINO_AVR_PRO)						\
  || defined(ARDUINO_AVR_UNO_WIFI_DEV_ED)
+/**
+ * GPIO digital pin symbols for the ATmega328P based boards.
+ * @section Board
+ * @code
+ *                         Arduino Uno
+ *                  -----              -------
+ *                +-|(o)|--------------| USB |---+
+ *                | |   |              |     |   |
+ *                | -----              |     |   |
+ *                |                    -------   |
+ *                |                              |
+ *                |                            []| SCL
+ *                |                            []| SDA
+ *                |                            []| AREF
+ *                |                            []| GND
+ *             NC |[]                          []| D13/SCK/LED
+ *          IOREF |[]                          []| D12/MISO
+ *          RESET |[]                          []| D11/MOSI/PWM5
+ *            3V3 |[]                          []| D10/SS/PWM4
+ *             5V |[]                          []| D9/PWM3
+ *            GND |[]                          []| D8
+ *            GND |[]                            |
+ *            Vin |[]                          []| D7
+ *                |                            []| D6/PWM2
+ *         A0/D14 |[]                          []| D5/PWM1
+ *         A1/D15 |[]                          []| D4
+ *         A2/D16 |[]                          []| D3/EXT1/PWM0
+ *         A3/D17 |[]                          []| D2/EXT0
+ *     SDA/A4/D18 |[]            ICSP          []| D1/TX
+ *     SCL/A5/D19 |[]           o-o-o*         []| D0/RX
+ *                 \            o-o-o           /
+ *                  +--------------------------+
+ * @endcode
+ */
 class BOARD {
 public:
   enum pin_t {
@@ -62,7 +96,6 @@ public:
     D19 = 0x265			//!< PINC:5, A5, SCL
   };
 };
-
 #elif defined(ARDUINO_AVR_YUN)						\
  ||   defined(ARDUINO_AVR_LEONARDO)					\
  ||   defined(ARDUINO_AVR_LEONARDO_ETH)					\
@@ -71,6 +104,41 @@ public:
  ||   defined(ARDUINO_AVR_LILYPAD_USB)					\
  ||   defined(ARDUINO_AVR_ROBOT_CONTROL)				\
  ||   defined(ARDUINO_AVR_ROBOT_MOTOR)
+/**
+ * GPIO digital pin symbols for the ATmega32U4 based boards.
+ * @section Board
+ * @code
+ *                       Arduino Leonardo
+ *                  -----               -----
+ *                +-|(o)|---------------|USB|----+
+ *                | |   |               |   |    |
+ *                | -----               ----|    |
+ *                |                              |
+ *                |                              |
+ *                |                            []| SCL
+ *                |                            []| SDA
+ *                |                            []| AREF
+ *                |                            []| GND
+ *             NC |[]                          []| D13/PWM5/LED
+ *          IOREF |[]                          []| D12/A7
+ *          RESET |[]                          []| D11/PWM0
+ *            3V3 |[]                          []| D10/PWM3/A11
+ *             5V |[]                          []| D9/PWM2/A10
+ *            GND |[]                          []| D8/A9
+ *            GND |[]                            |
+ *            Vin |[]                          []| D7
+ *                |                            []| D6/PWM6/A8
+ *         A0/D14 |[]                          []| D5/PWM4
+ *         A1/D15 |[]                          []| D4/A6
+ *         A2/D16 |[]                          []| D3/SCL/EXT0/PWM1
+ *         A3/D17 |[]                          []| D2/SDA/EXT1
+ *         A4/D18 |[]            ICSP          []| D1/TX1/EXT3
+ *         A5/D19 |[]           o-o-o*         []| D0/RX1/EXT2
+ *                 \            o-o-o           /
+ *                  +--------------------------+
+ * @endcode
+ * Note: The SPI pins (on ICSP) are also numbered as digital pins.
+ */
 class BOARD {
 public:
   enum pin_t {
@@ -103,11 +171,23 @@ public:
     D23 = 0x230			//!< PINB:0, SS, RXLED
   };
 };
-
 #elif defined(ARDUINO_attiny)
 #if   defined(__AVR_ATtiny25__)						\
  ||   defined(__AVR_ATtiny45__)						\
  ||   defined(__AVR_ATtiny85__)
+/**
+ * GPIO digital pin symbols for the ATtinyX5 based boards.
+ * @section Circuit
+ * @code
+ *                  ATinyX5
+ *                +----U----+
+ * (/RESET)-----1-|PB5   VCC|-8-----------------(VCC)
+ * (D3/A3)------2-|PB3   PB2|-7--(D2/A1/EXT0/SCL/SCK)
+ * (LED/D4/A2)--3-|PB4   PB1|-6-------------(D1/MOSI)
+ * (GND)--------4-|GND   PB0|-5---------(D0/SDA/MISO)
+ *                +---------+
+ * @endcode
+ */
 class BOARD {
 public:
   enum pin_t {
@@ -122,6 +202,23 @@ public:
 #elif defined(__AVR_ATtiny24__)						\
  ||   defined(__AVR_ATtiny44__)						\
  ||   defined(__AVR_ATtiny84__)
+/**
+ * GPIO digital pin symbols for the ATtinyX4 based boards.
+ *
+ * @section Circuit
+ * @code
+ *                       ATinyX4
+ *                     +----U----+
+ * (VCC)-------------1-|VCC   GND|-14------------(GND)
+ * (D8)--------------2-|PB0   PA0|-13----------(D0/A0)
+ * (D9)--------------3-|PB1   PA1|-12----------(D1/A1)
+ * (/RESET)----------4-|PB3   PA2|-11----------(D2/A2)
+ * (EXT0/D10)--------5-|PB2   PA3|-10-------(D3/A3/SS)
+ * (LED/D7/A7)-------6-|PA7   PA4|-9---(D4/A4/SCL/SCK)
+ * (MISO/SDA/D6/A6)--7-|PA6   PA5|-8------(D5/A5/MOSI)
+ *                     +---------+
+ * @endcode
+ */
 class BOARD {
 public:
   enum pin_t {
