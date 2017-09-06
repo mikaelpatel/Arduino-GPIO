@@ -2,16 +2,20 @@
 
 #if defined(ARDUINO_attiny)
 GPIO<BOARD::D0> led;
-GPIO<BOARD::D1> pin;
+GPIO<BOARD::D1> data;
+#define LED_PIN 0
+#define DATA_PIN 1
 #else
 GPIO<BOARD::D13> led;
-GPIO<BOARD::D12> pin;
+GPIO<BOARD::D12> data;
+#define LED_PIN 13
+#define DATA_PIN 12
 #endif
 
 void setup()
 {
   led.output();
-  pin.input_pullup();
+  data.input_pullup();
 }
 
 void loop()
@@ -20,8 +24,8 @@ void loop()
   // 1.1 Arduino core digitalWrite
   // 4.25 us, 8.562 us, 117 kHz
   for (int i = 0; i < 8; i++) {
-    digitalWrite(13, 1);
-    digitalWrite(13, 0);
+    digitalWrite(LED_PIN, 1);
+    digitalWrite(LED_PIN, 0);
   }
   delayMicroseconds(10);
 
@@ -80,10 +84,10 @@ void loop()
   // 2.1 Arduino core digitalRead
   // 8.062 us, 3.812 us
   for (int i = 0; i < 8; i++) {
-    digitalWrite(13, 1);
-    uint8_t value = digitalRead(12);
+    digitalWrite(LED_PIN, 1);
+    uint8_t value = digitalRead(DATA_PIN);
     (void) value;
-    digitalWrite(13, 0);
+    digitalWrite(LED_PIN, 0);
   }
   delayMicroseconds(10);
 
@@ -91,7 +95,7 @@ void loop()
   // 0.1875 us, 0.0625 us
   for (int i = 0; i < 8; i++) {
     led = 1;
-    uint8_t value = pin;
+    uint8_t value = data;
     (void) value;
     led = 0;
   }
@@ -101,8 +105,8 @@ void loop()
   // 3.1 Arduino core digitalRead-digitalWrite
   // 7.938 us, 16.08 us, 62 kHz
   for (int i = 0; i < 8; i++) {
-    digitalWrite(13, !digitalRead(13));
-    digitalWrite(13, !digitalRead(13));
+    digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+    digitalWrite(LED_PIN, !digitalRead(LED_PIN));
   }
   delayMicroseconds(10);
 
