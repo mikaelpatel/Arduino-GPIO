@@ -9,6 +9,8 @@ Additional support classes are available for Shift Register
 Input/Output, and Software Serial. These also demonstrate how the GPIO
 template class may be used to construct additional libraries.
 
+Version: 1.3
+
 ## Classes
 
 * [Configuration, Board](./src/Board.h)
@@ -25,3 +27,8 @@ template class may be used to construct additional libraries.
 * [ShiftIn](./examples/ShiftIn)
 * [ShiftOut](./examples/ShiftOut)
 * [SoftwareSerial](./examples/SoftwareSerial)
+
+## Usage
+
+* [1-Wire library, OWI](https://github.com/mikaelpatel/Arduino-OWI)
+* [I2C library, TWI](https://github.com/mikaelpatel/Arduino-TWI)
