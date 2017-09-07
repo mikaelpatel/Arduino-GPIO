@@ -30,5 +30,6 @@ Version: 1.3
 
 ## Usage
 
-* [1-Wire library, OWI](https://github.com/mikaelpatel/Arduino-OWI)
-* [I2C library, TWI](https://github.com/mikaelpatel/Arduino-TWI)
+* [1-Wire](https://github.com/mikaelpatel/Arduino-OWI)
+* [I2C](https://github.com/mikaelpatel/Arduino-TWI)
+* [SPI](https://github.com/mikaelpatel/Arduino-SPI)
