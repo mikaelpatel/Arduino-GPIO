@@ -22,51 +22,43 @@
 /**
  * Board pin values are constructed from port control register
  * address (msb, bit 15..4) and pin bit position in control register
- * (lsb, bit 3..0). This allows the pin values to be written
- * directly in hexadecimal format.
+ * (lsb, bit 3..0). This allows the pin values to be written directly
+ * in hexadecimal format and allows compile-time optimisation in GPIO
+ * template class.
  */
-#if defined(ARDUINO_AVR_UNO)						\
- || defined(ARDUINO_AVR_DUEMILANOVE)					\
- || defined(ARDUINO_AVR_NANO)						\
- || defined(ARDUINO_AVR_MINI)						\
- || defined(ARDUINO_AVR_ETHERNET)					\
- || defined(ARDUINO_AVR_FIO)						\
- || defined(ARDUINO_AVR_BT)						\
- || defined(ARDUINO_AVR_LILYPAD)					\
- || defined(ARDUINO_AVR_PRO)						\
- || defined(ARDUINO_AVR_UNO_WIFI_DEV_ED)
+#if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
 /**
- * GPIO digital pin symbols for the ATmega328P based boards.
+ * GPIO digital pin symbols for ATmega168/ATmega328P based boards.
  * @section Board
  * @code
- *                         Arduino Uno
- *                  -----              -------
- *                +-|(o)|--------------| USB |---+
- *                | |   |              |     |   |
- *                | -----              |     |   |
- *                |                    -------   |
- *                |                              |
- *                |                            []| SCL
- *                |                            []| SDA
- *                |                            []| AREF
- *                |                            []| GND
- *             NC |[]                          []| D13/SCK/LED
- *          IOREF |[]                          []| D12/MISO
- *          RESET |[]                          []| D11/MOSI/PWM5
- *            3V3 |[]                          []| D10/SS/PWM4
- *             5V |[]                          []| D9/PWM3
- *            GND |[]                          []| D8
- *            GND |[]                            |
- *            Vin |[]                          []| D7
- *                |                            []| D6/PWM2
- *         A0/D14 |[]                          []| D5/PWM1
- *         A1/D15 |[]                          []| D4
- *         A2/D16 |[]                          []| D3/EXT1/PWM0
- *         A3/D17 |[]                          []| D2/EXT0
- *     SDA/A4/D18 |[]            ICSP          []| D1/TX
- *     SCL/A5/D19 |[]           o-o-o*         []| D0/RX
- *                 \            o-o-o           /
- *                  +--------------------------+
+ *                     Arduino Uno
+ *              -----              -------
+ *            +-|(o)|--------------| USB |---+
+ *            | |   |              |     |   |
+ *            | -----              |     |   |
+ *            |                    -------   |
+ *            |                              |
+ *            |                            []| SCL
+ *            |                            []| SDA
+ *            |                            []| AREF
+ *            |                            []| GND
+ *         NC |[]                          []| D13/SCK/LED
+ *      IOREF |[]                          []| D12/MISO
+ *      RESET |[]                          []| D11/MOSI/PWM5
+ *        3V3 |[]                          []| D10/SS/PWM4
+ *         5V |[]                          []| D9/PWM3
+ *        GND |[]                          []| D8
+ *        GND |[]                            |
+ *        Vin |[]                          []| D7
+ *            |                            []| D6/PWM2
+ *     A0/D14 |[]                          []| D5/PWM1
+ *     A1/D15 |[]                          []| D4
+ *     A2/D16 |[]                          []| D3/EXT1/PWM0
+ *     A3/D17 |[]                          []| D2/EXT0
+ * SDA/A4/D18 |[]           ICSP           []| D1/TX
+ * SCL/A5/D19 |[]          [o-o-*]         []| D0/RX
+ *             \           [o-o-o]          /
+ *              +--------------------------+
  * @endcode
  */
 class BOARD {
@@ -96,48 +88,51 @@ public:
     D19 = 0x265			//!< PINC:5, A5, SCL
   };
 };
-#elif defined(ARDUINO_AVR_YUN)						\
- ||   defined(ARDUINO_AVR_LEONARDO)					\
- ||   defined(ARDUINO_AVR_LEONARDO_ETH)					\
- ||   defined(ARDUINO_AVR_MICRO)					\
- ||   defined(ARDUINO_AVR_ESPLORA)					\
- ||   defined(ARDUINO_AVR_LILYPAD_USB)					\
- ||   defined(ARDUINO_AVR_ROBOT_CONTROL)				\
- ||   defined(ARDUINO_AVR_ROBOT_MOTOR)
+#elif defined(__AVR_ATmega32u4__)
 /**
- * GPIO digital pin symbols for the ATmega32U4 based boards.
+ * GPIO digital pin symbols for ATmega32U4 based boards.
  * @section Board
  * @code
- *                       Arduino Leonardo
- *                  -----               -----
- *                +-|(o)|---------------|USB|----+
- *                | |   |               |   |    |
- *                | -----               ----|    |
- *                |                              |
- *                |                              |
- *                |                            []| SCL
- *                |                            []| SDA
- *                |                            []| AREF
- *                |                            []| GND
- *             NC |[]                          []| D13/PWM5/LED
- *          IOREF |[]                          []| D12/A7
- *          RESET |[]                          []| D11/PWM0
- *            3V3 |[]                          []| D10/PWM3/A11
- *             5V |[]                          []| D9/PWM2/A10
- *            GND |[]                          []| D8/A9
- *            GND |[]                            |
- *            Vin |[]                          []| D7
- *                |                            []| D6/PWM6/A8
- *         A0/D14 |[]                          []| D5/PWM4
- *         A1/D15 |[]                          []| D4/A6
- *         A2/D16 |[]                          []| D3/SCL/EXT0/PWM1
- *         A3/D17 |[]                          []| D2/SDA/EXT1
- *         A4/D18 |[]            ICSP          []| D1/TX1/EXT3
- *         A5/D19 |[]           o-o-o*         []| D0/RX1/EXT2
- *                 \            o-o-o           /
- *                  +--------------------------+
+ *                   Arduino Leonardo
+ *              -----               -----
+ *            +-|(o)|---------------|USB|----+
+ *            | |   |               |   |    |
+ *            | -----               ----|    |
+ *            |                              |
+ *            |                              |
+ *            |                            []| SCL
+ *            |                            []| SDA
+ *            |                            []| AREF
+ *            |                            []| GND
+ *         NC |[]                          []| D13/PWM5/LED
+ *      IOREF |[]                          []| D12/A7
+ *      RESET |[]                          []| D11/PWM0
+ *        3V3 |[]                          []| D10/PWM3/A11
+ *         5V |[]                          []| D9/PWM2/A10
+ *        GND |[]                          []| D8/A9
+ *        GND |[]                            |
+ *        Vin |[]                          []| D7
+ *            |                            []| D6/PWM6/A8
+ *     A0/D14 |[]                          []| D5/PWM4
+ *     A1/D15 |[]                          []| D4/A6
+ *     A2/D16 |[]                          []| D3/SCL/EXT0/PWM1
+ *     A3/D17 |[]                          []| D2/SDA/EXT1
+ *     A4/D18 |[]           ICSP           []| D1/TX1/EXT3
+ *     A5/D19 |[]          [o-o-*]         []| D0/RX1/EXT2
+ *             \           [o-o-o]          /
+ *              +--------------------------+
  * @endcode
- * Note: The SPI pins (on ICSP) are also numbered as digital pins.
+ * @section ICSP
+ * The SPI pins (on ICSP) are also numbered as digital pins. SPI SS
+ * is used for the RX LED.
+ * @code
+ *                          ICSP
+ *                         +----+
+ *                MISO/D20 |*  o| VCC
+ *                 SCK/D21 |o  o| D22/MOSI
+ *                 RESET   |o  o| GND
+ *                         +----+
+ * @endcode
  */
 class BOARD {
 public:
@@ -172,39 +167,11 @@ public:
   };
 };
 #elif defined(ARDUINO_attiny)
-#if   defined(__AVR_ATtiny25__)						\
- ||   defined(__AVR_ATtiny45__)						\
- ||   defined(__AVR_ATtiny85__)
-/**
- * GPIO digital pin symbols for the ATtinyX5 based boards.
- * @section Circuit
- * @code
- *                  ATinyX5
- *                +----U----+
- * (/RESET)-----1-|PB5   VCC|-8-----------------(VCC)
- * (D3/A3)------2-|PB3   PB2|-7--(D2/A1/EXT0/SCL/SCK)
- * (LED/D4/A2)--3-|PB4   PB1|-6-------------(D1/MOSI)
- * (GND)--------4-|GND   PB0|-5---------(D0/SDA/MISO)
- *                +---------+
- * @endcode
- */
-class BOARD {
-public:
-  enum pin_t {
-    D0 = 0x360,			//!< PINB:0,
-    D1 = 0x361,			//!< PINB:1,
-    D2 = 0x362,			//!< PINB:2, A1
-    D3 = 0x363,			//!< PINB:3, A3
-    D4 = 0x364,			//!< PINB:4, A2
-    D5 = 0x365			//!< PINB:5, A0
-  };
-};
-#elif defined(__AVR_ATtiny24__)						\
+#if   defined(__AVR_ATtiny24__)						\
  ||   defined(__AVR_ATtiny44__)						\
  ||   defined(__AVR_ATtiny84__)
 /**
- * GPIO digital pin symbols for the ATtinyX4 based boards.
- *
+ * GPIO digital pin symbols for ATtinyX4 based boards.
  * @section Circuit
  * @code
  *                       ATinyX4
@@ -235,11 +202,38 @@ public:
     D10 = 0x360			//!< PINB:0
   };
 };
+#elif defined(__AVR_ATtiny25__)						\
+ ||   defined(__AVR_ATtiny45__)						\
+ ||   defined(__AVR_ATtiny85__)
+/**
+ * GPIO digital pin symbols for ATtinyX5 based boards.
+ * @section Circuit
+ * @code
+ *                       ATinyX5
+ *                     +----U----+
+ * (/RESET)----------1-|PB5   VCC|-8-----------------(VCC)
+ * (D3/A3)-----------2-|PB3   PB2|-7--(D2/A1/EXT0/SCL/SCK)
+ * (LED/D4/A2)-------3-|PB4   PB1|-6-------------(D1/MOSI)
+ * (GND)-------------4-|GND   PB0|-5---------(D0/SDA/MISO)
+ *                     +---------+
+ * @endcode
+ */
+class BOARD {
+public:
+  enum pin_t {
+    D0 = 0x360,			//!< PINB:0,
+    D1 = 0x361,			//!< PINB:1,
+    D2 = 0x362,			//!< PINB:2, A1
+    D3 = 0x363,			//!< PINB:3, A3
+    D4 = 0x364,			//!< PINB:4, A2
+    D5 = 0x365			//!< PINB:5, A0
+  };
+};
 #else
 #error Board.h: attiny variant not supported
 #endif
 
 #else
-#error Board.h: arduino board not supported
+#error Board.h: avr mcu not supported
 #endif
 #endif
