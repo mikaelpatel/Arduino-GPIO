@@ -9,7 +9,7 @@ Additional support classes are available for Shift Register
 Input/Output, and Software Serial. These also demonstrate how the GPIO
 template class may be used to construct additional libraries.
 
-Version: 1.3
+Version: 1.4
 
 ## Classes
 

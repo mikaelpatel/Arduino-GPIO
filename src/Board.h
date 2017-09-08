@@ -1,6 +1,6 @@
 /**
  * @file Board.h
- * @version 1.2
+ * @version 1.3
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -85,10 +85,15 @@ public:
     D16 = 0x262,		//!< PINC:2, A2
     D17 = 0x263,		//!< PINC:3, A3
     D18 = 0x264,		//!< PINC:4, A4, SDA
-    D19 = 0x265			//!< PINC:5, A5, SCL
+    D19 = 0x265,		//!< PINC:5, A5, SCL
+
+    SS = D10,			//!< Slave Select
+    MOSI = D11,			//!< Master Output Slave Input
+    MISO = D12,			//!< Master Input Slave Output
+    SCK = D13			//!< Clock
   };
 };
-#elif defined(__AVR_ATmega32u4__)
+#elif defined(__AVR_ATmega32U4__)
 /**
  * GPIO digital pin symbols for ATmega32U4 based boards.
  * @section Board
@@ -163,7 +168,12 @@ public:
     D20 = 0x233,		//!< PINB:3, MISO, ICSP.1
     D21 = 0x231,		//!< PINB:1, SCK, ICSP.3
     D22 = 0x232,		//!< PINB:2, MOSI, ICSP.4
-    D23 = 0x230			//!< PINB:0, SS, RXLED
+    D23 = 0x230,		//!< PINB:0, SS, RXLED
+
+    SS = D23,			//!< Slave Select
+    MOSI = D22,			//!< Master Output Slave Input
+    MISO = D20,			//!< Master Input Slave Output
+    SCK = D21			//!< Clock
   };
 };
 #elif defined(ARDUINO_attiny)

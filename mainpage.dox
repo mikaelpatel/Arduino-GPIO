@@ -11,7 +11,7 @@ Input (SRPI) and Output (SRPO), and Serial (Software::Serial). These
 also demonstrate how the GPIO template class may be used to construct
 additional classes and libraries.
 
-Version: 1.3
+Version: 1.4
 */
 
 /** @page License
