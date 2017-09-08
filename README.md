@@ -28,6 +28,15 @@ Version: 1.3
 * [ShiftOut](./examples/ShiftOut)
 * [SoftwareSerial](./examples/SoftwareSerial)
 
+## Benchmarks
+
+Wiring | us | GPIO | us
+------ |----|------|----
+digitalWrite | 4.25 | pin = value | 0.125
+digitalRead | 3.75 | value = pin | 0.0625
+shiftIn | 85 | srpi >> value | 5
+shiftOut | 103 | value << srpo | 8
+
 ## Usage
 
 * [1-Wire](https://github.com/mikaelpatel/Arduino-OWI)
