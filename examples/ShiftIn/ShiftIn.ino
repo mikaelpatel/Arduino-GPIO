@@ -2,19 +2,17 @@
 #include "SRPI.h"
 
 #if defined(ARDUINO_attiny)
-SRPI<BOARD::D0, BOARD::D1, LSBFIRST> ins;
+SRPI<LSBFIRST, BOARD::D0, BOARD::D1> ins;
 #define DATA_PIN 0
 #define CLOCK_PIN 1
 #else
-SRPI<BOARD::D12, BOARD::D13, LSBFIRST> ins;
+SRPI<LSBFIRST, BOARD::D12, BOARD::D13> ins;
 #define DATA_PIN 12
 #define CLOCK_PIN 13
 #endif
 
 void setup()
 {
-  pinMode(DATA_PIN, INPUT);
-  pinMode(CLOCK_PIN, OUTPUT);
 }
 
 void loop()

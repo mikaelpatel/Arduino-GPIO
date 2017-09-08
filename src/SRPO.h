@@ -27,7 +27,7 @@
  * @param[in] CLOCK_PIN board pin for clock output signal.
  * @param[in] BIT_ORDER LSBFIRST or MSBFIRST.
  */
-template<BOARD::pin_t DATA_PIN, BOARD::pin_t CLOCK_PIN, uint8_t BIT_ORDER>
+template<uint8_t BITORDER, BOARD::pin_t DATA_PIN, BOARD::pin_t CLOCK_PIN>
 class SRPO {
 public:
   /**
@@ -48,19 +48,23 @@ public:
    */
   void operator<<(uint8_t value)
   {
-    if (BIT_ORDER == LSBFIRST) {
-      for (uint8_t mask = 1; mask; mask <<= 1) {
+    if (BITORDER == LSBFIRST) {
+      uint8_t mask = 1;
+      do {
 	m_data = value & mask;
 	m_clock.toggle();
+	mask <<= 1;
 	m_clock.toggle();
-      }
+      } while (mask);
     }
     else {
-      for (uint8_t mask = 0x80; mask; mask >>= 1) {
+      uint8_t mask = 0x80;
+      do {
 	m_data = value & mask;
 	m_clock.toggle();
+	mask >>= 1;
 	m_clock.toggle();
-      }
+      } while (mask);
     }
   }
 

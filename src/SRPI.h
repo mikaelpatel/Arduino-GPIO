@@ -23,11 +23,11 @@
 
 /**
  * Shift Register Parallel Input (SRPI) template class using GPIO.
+ * @param[in] BITORDER LSBFIRST or MSBFIRST.
  * @param[in] DATA_PIN board pin for data input signal.
  * @param[in] CLOCK_PIN board pin for clock output signal.
- * @param[in] BIT_ORDER LSBFIRST or MSBFIRST.
  */
-template<BOARD::pin_t DATA_PIN, BOARD::pin_t CLOCK_PIN, uint8_t BIT_ORDER>
+template<uint8_t BITORDER, BOARD::pin_t DATA_PIN, BOARD::pin_t CLOCK_PIN>
 class SRPI {
 public:
   /**
@@ -49,7 +49,7 @@ public:
    */
   void operator>>(uint8_t& value)
   {
-    if (BIT_ORDER == LSBFIRST) {
+    if (BITORDER == LSBFIRST) {
       for (uint8_t mask = 1; mask; mask <<= 1) {
 	m_clock.toggle();
 	value |= (m_data ? mask : 0);
