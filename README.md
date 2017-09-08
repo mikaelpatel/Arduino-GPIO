@@ -30,12 +30,12 @@ Version: 1.3
 
 ## Benchmarks
 
-Wiring | us | GPIO | us
------- |----|------|----
-digitalWrite | 4.25 | pin = value | 0.125
-digitalRead | 3.75 | value = pin | 0.0625
-shiftIn | 85 | srpi >> value | 5
-shiftOut | 103 | value << srpo | 8
+Wiring | us | GPIO | us | Xn
+------ |----|------|----|----
+digitalWrite | 4.25 | pin = value | 0.125 | 34
+digitalRead | 3.75 | value = pin | 0.0625 | 60
+shiftIn | 85 | srpi >> value | 5 | 17
+shiftOut | 103 | srpo << value | 8 | 13
 
 ## Usage
 
