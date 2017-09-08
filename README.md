@@ -32,8 +32,8 @@ Version: 1.3
 
 Wiring | us | GPIO | us | Xn
 ------ |----|------|----|----
-digitalWrite | 4.25 | pin = value | 0.125 | 34
 digitalRead | 3.75 | value = pin | 0.0625 | 60
+digitalWrite | 4.25 | pin = value | 0.125 | 34
 shiftIn | 85 | srpi >> value | 5 | 17
 shiftOut | 103 | srpo << value | 8 | 13
 
