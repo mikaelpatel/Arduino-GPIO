@@ -176,8 +176,7 @@ public:
     SCK = D21			//!< Clock
   };
 };
-#elif defined(ARDUINO_attiny)
-#if   defined(__AVR_ATtiny24__)						\
+#elif defined(__AVR_ATtiny24__)						\
  ||   defined(__AVR_ATtiny44__)						\
  ||   defined(__AVR_ATtiny84__)
 /**
@@ -209,7 +208,12 @@ public:
     D7 = 0x397,			//!< PINA:7, A7
     D8 = 0x362,			//!< PINB:2
     D9 = 0x361,			//!< PINB:1
-    D10 = 0x360			//!< PINB:0
+    D10 = 0x360,		//!< PINB:0
+
+    SS = D3,			//!< Slave Select
+    MOSI = D5,			//!< Master Output Slave Input
+    MISO = D6,			//!< Master Input Slave Output
+    SCK = D4			//!< Clock
   };
 };
 #elif defined(__AVR_ATtiny25__)						\
@@ -236,13 +240,14 @@ public:
     D2 = 0x362,			//!< PINB:2, A1
     D3 = 0x363,			//!< PINB:3, A3
     D4 = 0x364,			//!< PINB:4, A2
-    D5 = 0x365			//!< PINB:5, A0
+    D5 = 0x365,			//!< PINB:5, A0
+
+    SS = D3,			//!< Slave Select
+    MOSI = D1,			//!< Master Output Slave Input
+    MISO = D0,			//!< Master Input Slave Output
+    SCK = D2			//!< Clock
   };
 };
-#else
-#error Board.h: attiny variant not supported
-#endif
-
 #else
 #error Board.h: avr mcu not supported
 #endif
