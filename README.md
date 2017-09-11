@@ -33,7 +33,7 @@ Version: 1.5
 
 ## Benchmarks
 
-Wiring | (Uno/Mega) us | GPIO | us | Xn (Uno/Mega)
+Wiring | us | GPIO | us | Xn (Uno/Mega)
 ------ |---------------|------|----|--------------
 digitalRead | 3.75/6.19 | var = pin | 0.0625 | 60/99
 digitalWrite | 4.25/6.94 | pin = val | 0.125 | 34/56
