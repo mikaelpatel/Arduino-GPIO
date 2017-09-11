@@ -171,10 +171,10 @@ public:
     D18 = GPIO_PIN(0x2f,1),	//!< PINF:1/A4
     D19 = GPIO_PIN(0x2f,0),	//!< PINF:0/A5
 
-    D20 = 0x230,		//!< PINB:0/SS/RXLED
-    D21 = 0x232,		//!< PINB:2/MOSI/ICSP.4
-    D22 = 0x233,		//!< PINB:3/MISO/ICSP.1
-    D23 = 0x231,		//!< PINB:1/SCK/ICSP.3
+    D20 = GPIO_PIN(0x23,0),	//!< PINB:0/SS/RXLED
+    D21 = GPIO_PIN(0x23,2),	//!< PINB:2/MOSI/ICSP.4
+    D22 = GPIO_PIN(0x23,3),	//!< PINB:3/MISO/ICSP.1
+    D23 = GPIO_PIN(0x23,1),	//!< PINB:1/SCK/ICSP.3
 
     SS = D20,			//!< SPI Slave Select
     MOSI = D22,			//!< SPI Master Output Slave Input
