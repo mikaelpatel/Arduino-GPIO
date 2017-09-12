@@ -125,83 +125,109 @@ void loop()
   // Benchmark#4: GPIO atomic access of io ports with higher address
   // These benchmarks are for Arduino Mega pins that use ports above
   // address 0x60 (PORTH, PORTJ, PINK and PINL). See Board.h.
-  GPIO<BOARD::D6> pin;
+  GPIO<BOARD::D6> data;
+#define DATA_PIN 6
 
   // 0.625 us (Mega)
   led.toggle();
-  pin.output();
+  data.output();
   led.toggle();
 
   // 0.625 us (Mega)
   led.toggle();
-  pin.write(0);
+  data.write(0);
   led.toggle();
 
-  // 4.1 GPIO value and assignment operator
+  // 4.1 Arduino core digitalRead-digitalWrite
+  // 14 us, 28.25 us, 35 kHz (Mega)
+  for (int i = 0; i < 8; i++) {
+    digitalWrite(DATA_PIN, !digitalRead(DATA_PIN));
+    digitalWrite(DATA_PIN, !digitalRead(DATA_PIN));
+  }
+  delayMicroseconds(10);
+
+  // 4.2 GPIO value and assignment operator
   // 0.8125 us, 1.938 us, 516 kHz (Mega)
   for (int i = 0; i < 8; i++) {
-    pin = !pin;
-    pin = !pin;
+    data = !data;
+    data = !data;
   }
   delayMicroseconds(10);
 
-  // 4.2 GPIO pin assignment operator
+  // 4.3 Arduino core digitalWrite
+  // 7.3 us, 14.75 us, 68 kHz (Mega)
+  for (int i = 0; i < 8; i++) {
+    digitalWrite(DATA_PIN, 1);
+    digitalWrite(DATA_PIN, 0);
+  }
+  delayMicroseconds(10);
+
+  // 4.4 GPIO pin assignment operator
   // 0.5 us, 1.25, 800 kHz (Mega)
   for (int i = 0; i < 8; i++) {
-    pin = 1;
-    pin = 0;
+    data = 1;
+    data = 0;
   }
   delayMicroseconds(10);
 
-  // 4.3 GPIO high and low
+  // 4.5 GPIO high and low
   // 0.5 us, 1.25, 800 kHz (Mega)
   for (int i = 0; i < 8; i++) {
-    pin.high();
-    pin.low();
+    data.high();
+    data.low();
   }
   delayMicroseconds(10);
 
-  // 4.4 GPIO toggle (single)
+  // 4.6 GPIO toggle (single)
   // 0.75 us, 1.5, 667 kHz (Mega)
   for (int i = 0; i < 16; i++) {
-    pin.toggle();
+    data.toggle();
   }
   delayMicroseconds(10);
 
-  // 4.5 GPIO toggle (double)
+  // 4.7 GPIO toggle (double)
   // 0.5 us, 1.25, 800 kHz (Mega)
   for (int i = 0; i < 8; i++) {
-    pin.toggle();
-    pin.toggle();
+    data.toggle();
+    data.toggle();
   }
   delayMicroseconds(10);
 
-  // 4.6 GPIO toggle (unrolled)
+  // 4.8 GPIO toggle (unrolled)
   // 0.5 us, 1.25, 1 MHz (Mega)
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
-  pin.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
+  data.toggle();
   delayMicroseconds(10);
 
-  // 4.7 GPIO pin value operator
-  // 0.25 us, 0.625, 1.6 MHz (Mega)
-  pin.input();
+  // 4.9 Arduino core digitalRead
+  // 6.563 us, 6.938 us, 144 kHz (Mega)
+  data.input();
   for (int i = 0; i < 8; i++) {
     led = 1;
-    uint8_t value = pin;
+    uint8_t value = digitalRead(DATA_PIN);
+    (void) value;
+    led = 0;
+  }
+
+  // 4.10 GPIO data value operator
+  // 0.25 us, 0.625, 1.6 MHz (Mega)
+  for (int i = 0; i < 8; i++) {
+    led = 1;
+    uint8_t value = data;
     (void) value;
     led = 0;
   }
