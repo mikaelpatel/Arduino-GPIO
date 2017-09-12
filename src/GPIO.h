@@ -1,6 +1,6 @@
 /**
  * @file GPIO.h
- * @version 1.3
+ * @version 1.4
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -29,7 +29,7 @@
  */
 #define GPIO_ATOMIC(expr)					\
   do {								\
-    if (PIN < 0x600) {						\
+    if (PIN < GPIO_ATOMIC_MAX) {				\
       expr;							\
     }								\
     else {							\
@@ -138,7 +138,7 @@ public:
 
   /**
    * Set pin to given state. Non-zero value will set the pin HIGH(1),
-   * and zero value will set the pin LOW(0). Sorthand for write(value).
+   * and zero value will set the pin LOW(0). Shorthand for write(value).
    * @param[in] value to set pin.
    */
   void operator=(int value)
@@ -153,7 +153,6 @@ public:
    * @param[in] width in micro-seconds.
    */
   void pulse(uint16_t width)
-    __attribute__((always_inline))
   {
     if (width == 0) return;
     uint16_t count = ((width * (F_CPU / 1000000L)) / 4);
@@ -164,6 +163,19 @@ public:
     SFR()->pin |= MASK;
     SREG = sreg;
     __asm__ __volatile__("" ::: "memory");
+  }
+
+  /**
+   * Detect pulse and return width in micro-seconds.
+   * @return width in micro-seconds.
+   */
+  int pulse()
+  {
+    bool s0 = read();
+    while (read() == s0);
+    uint16_t t0 = micros();
+    while (read() != s0);
+    return (micros() - t0);
   }
 
 protected:
@@ -181,10 +193,10 @@ protected:
   gpio_reg_t* SFR()
     __attribute__((always_inline))
   {
-    return ((gpio_reg_t*) (PIN >> 4));
+    return ((gpio_reg_t*) GPIO_REG(PIN));
   }
 
   /** Pin bit position mask for control registers. */
-  static const uint8_t MASK = _BV(PIN & 0xf);
+  static const uint8_t MASK = GPIO_MASK(PIN);
 };
 #endif

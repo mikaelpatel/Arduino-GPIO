@@ -1,6 +1,6 @@
 /**
  * @file Board.h
- * @version 1.3
+ * @version 1.4
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -20,12 +20,27 @@
 #define BOARD_H
 
 /**
- * Board pin values are constructed from port control register
- * address (msb, bit 15..4) and pin bit position (lsb, bit 3..0).
+ * Board pin values are bit-pointers and constructed from port control
+ * register address and pin bit position.
  * @param[in] port control register address.
  * @param[in] pin pin bit position in control register.
  */
 #define GPIO_PIN(port,pin) (((port) << 4) | (pin))
+
+/**
+ * Return port control register address from board pin value.
+ * @return io port address
+ */
+#define GPIO_REG(pin) (pin >> 4)
+
+/** Maximum port control register address for atomic instructions. */
+#define GPIO_ATOMIC_MAX GPIO_PIN(0x60,0)
+
+/**
+ * Return pin mask from board pin value.
+ * @return pin mask
+ */
+#define GPIO_MASK(pin) _BV(pin & 0xf)
 
 #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
 /**
@@ -231,7 +246,6 @@ public:
  *        GND |[][][][][][][][][][][][][][][][][][]| 5V
  *             \ 53                    31 /
  *              +------------------------+
- *
  * @endcode
  */
 class BOARD {

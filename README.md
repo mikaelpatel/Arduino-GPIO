@@ -12,7 +12,7 @@ template class may be used to construct additional libraries.
 This library supports boards based on ATmega168, ATmega328P,
 ATmega32U4, ATmega1280, ATmega2560, ATtinyX4 and ATtinyX5.
 
-Version: 1.5
+Version: 1.6
 
 ## Classes
 
@@ -42,6 +42,7 @@ shiftOut | 103/160 | srpo << val | 8 | 13/20
 
 ## Usage
 
-* [1-Wire](https://github.com/mikaelpatel/Arduino-OWI)
-* [I2C](https://github.com/mikaelpatel/Arduino-TWI)
-* [SPI](https://github.com/mikaelpatel/Arduino-SPI)
+* [Digital Humidity and Temperature Sensors, DHT](https://github.com/mikaelpatel/Arduino-DHT)
+* [1-Wire Bus Manager and Device Driver Support, OWI](https://github.com/mikaelpatel/Arduino-OWI)
+* [Serial Peripheral Interface Bus Manager and Device Driver Support, SPI](https://github.com/mikaelpatel/Arduino-SPI)
+* [I2C Bus Manager and Device Driver Support, TWI](https://github.com/mikaelpatel/Arduino-TWI)
