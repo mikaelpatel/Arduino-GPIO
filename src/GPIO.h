@@ -43,8 +43,8 @@
 
 /**
  * General Purpose Digital I/O pin template class. Highly optimized
- * pin access. The PIN address is 12-bit control register address
- * (msb) and 4-bit bit number (lsb). See Board.h for definitions.
+ * pin access. The PIN address is bit pointer to the port control
+ * register and pin bit position. See Board.h for details.
  * @param[in] PIN board pin definition.
  */
 template<BOARD::pin_t PIN>
@@ -117,7 +117,7 @@ public:
   }
 
   /**
-   * Toggle pin state.
+   * Toggle pin state. Shorthand for write(!read()).
    */
   void toggle()
     __attribute__((always_inline))
@@ -187,7 +187,7 @@ protected:
   };
 
   /**
-   * Return pointer to pin control registers.
+   * Return pointer to control registers.
    * @return pointer.
    */
   gpio_reg_t* SFR()
@@ -196,7 +196,7 @@ protected:
     return ((gpio_reg_t*) GPIO_REG(PIN));
   }
 
-  /** Pin bit position mask for control registers. */
+  /** Pin bit position mask in control registers. */
   static const uint8_t MASK = GPIO_MASK(PIN);
 };
 #endif
