@@ -16,8 +16,8 @@
  * Lesser General Public License for more details.
  */
 
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef HARDWARE_AVR_BOARD_H
+#define HARDWARE_AVR_BOARD_H
 
 /**
  * Board pin values are bit-pointers and constructed from port control

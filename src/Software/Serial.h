@@ -49,7 +49,11 @@ public:
    */
   void begin(uint32_t baudrate)
   {
+#if defined(AVR)
     m_count = ((F_CPU / baudrate) / 4) - 4;
+#elif defined(SAM)
+    m_count = 1000000 / baudrate;
+#endif
   }
 
   /**
@@ -76,7 +80,11 @@ public:
     noInterrupts();
     do {
       m_tx = data & 0x01;
+#if defined(AVR)
       _delay_loop_2(m_count);
+#elif defined(SAM)
+      delayMicroseconds(m_count);
+#endif
       data >>= 1;
     } while (--bits);
     interrupts();
@@ -111,6 +119,14 @@ public:
   virtual int read()
   {
     return (-1);
+  }
+
+  /**
+   * @override{Stream}
+   * Output only stream.
+   */
+  virtual void flush()
+  {
   }
 
 protected:

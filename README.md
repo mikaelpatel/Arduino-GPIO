@@ -9,15 +9,17 @@ Additional support classes are available for Shift Register
 Input/Output, and Software Serial. These also demonstrate how the GPIO
 template class may be used to construct additional libraries.
 
-This library supports boards based on ATmega168, ATmega328P,
+This library supports boards based on SAM3X8E, ATmega168, ATmega328P,
 ATmega32U4, ATmega1280, ATmega2560, ATtinyX4 and ATtinyX5.
 
-Version: 1.6
+Version: 1.7
 
 ## Classes
 
-* [Configuration, Board](./src/Board.h)
-* [General Purpose Input/Output, GPIO](./src/GPIO.h)
+* [AVR Board Configuration](./src/Hardware/AVR/Board.h)
+* [AVR General Purpose Input/Output, GPIO](./src/Hardware/AVR/GPIO.h)
+* [SAM Board Configuration](./src/Hardware/SAM/Board.h)
+* [SAM General Purpose Input/Output, GPIO](./src/Hardware/SAM/GPIO.h)
 * [Shift Register Parallel Input, SRPI](./src/SRPI.h)
 * [Shift Register Parallel Output, SRPO](./src/SRPO.h)
 * [Software Serial, Software::Serial](./src/Software/Serial.h)

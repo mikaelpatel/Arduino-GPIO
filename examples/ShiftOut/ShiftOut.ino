@@ -15,6 +15,8 @@ GPIO<BOARD::D11> ss;
 
 void setup()
 {
+  pinMode(DATA_PIN, OUTPUT);
+  pinMode(CLOCK_PIN, OUTPUT);
   ss.output();
 }
 
