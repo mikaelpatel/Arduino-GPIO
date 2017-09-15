@@ -30,6 +30,7 @@ void loop()
 {
   // Benchmark#1: Read-write digital pin
   // 1.1 Arduino core digitalRead-digitalWrite
+  // 2.625 us, 5.313 us, 188 kHz (Due)
   // 8.312 us, 16.81 us, 59 kHz (Uno)
   // 13.56 us, 27.31 us, 37 kHz (Mega)
   ss.high();
@@ -41,6 +42,7 @@ void loop()
   delayMicroseconds(10);
 
   // 1.2 GPIO value and assignment operator
+  // 0.25 us, 0.4375 us, 2.3 MHz (Due)
   // 0.4375 us, 0.9375 us, 1 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
@@ -52,6 +54,7 @@ void loop()
 
   // Benchmark#2: Write digital pin
   // 2.1 Arduino core digitalWrite
+  // 2.125 us, 4.375 us, 229 kHz (Due)
   // 4.312 us, 8.562 us, 117 kHz (Uno)
   // 6.938 us, 14 us, 71.4 kHz (Mega)
   ss.high();
@@ -63,6 +66,7 @@ void loop()
   delayMicroseconds(10);
 
   // 2.2 GPIO pin assignment operator
+  // 0.0625 us, 0.1875 us, 5.33 MHz (Due)
   // 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
@@ -74,6 +78,7 @@ void loop()
 
 
   // 2.3 GPIO high and low
+  // 0.0625 us, 0.1875 us, 5.33 MHz (Due)
   // 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
@@ -84,6 +89,7 @@ void loop()
   delayMicroseconds(10);
 
   // 2.4 GPIO toggle (single)
+  // 0.1875 us, 0.375 us, 2.66 MHz (Due)
   // 0.375 us, 0.75 us, 1.33 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 16; i++) {
@@ -93,6 +99,7 @@ void loop()
   delayMicroseconds(10);
 
   // 2.5 GPIO toggle (double)
+  // 0.125 us, 0.4375 us, 2.286 MHz (Due)
   // 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
@@ -103,6 +110,7 @@ void loop()
   delayMicroseconds(10);
 
   // 2.6 GPIO toggle (unrolled)
+  // 0.1875 us, 0.3125 us, 3.2 MHz (Due)
   // 0.125 us, 0.25 us, 4 MHz (Uno/Mega)
   ss.high();
   led.toggle();
@@ -126,6 +134,7 @@ void loop()
 
   // Benchmark#3: Read digital pin
   // 3.1 Arduino core digitalRead
+  // 3.312 us, 5.5 us (Due)
   // 8.062 us, 12.37 us (Uno)
   // 13.31 us, 20.38 us (Mega)
   ss.high();
@@ -139,6 +148,7 @@ void loop()
   delayMicroseconds(10);
 
   // 3.2 GPIO pin value operator
+  // 0.0625 us, 0.125 us (Due)
   // 0.1875 us, 0.5625 us (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
