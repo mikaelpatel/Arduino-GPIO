@@ -1,6 +1,6 @@
 /**
  * @file Hardware/AVR/GPIO.h
- * @version 1.4
+ * @version 1.5
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -44,7 +44,7 @@
 /**
  * General Purpose Digital I/O pin template class. Highly optimized
  * pin access. The PIN address is bit pointer to the port control
- * register and pin bit position. See Board.h for details.
+ * register and pin bit position. See Hardware/AVR/Board.h for details.
  * @param[in] PIN board pin definition.
  */
 template<BOARD::pin_t PIN>
@@ -53,19 +53,20 @@ public:
   /**
    * Set pin to input mode.
    */
-  void input()
+  GPIO<PIN>& input()
     __attribute__((always_inline))
   {
     GPIO_ATOMIC(SFR()->ddr &= ~MASK);
+    return (*this);
   }
 
   /**
-   * Set pin to input mode and activate internal pullup resistor.
+   * Used with input() to activate internal pullup resistor on
+   * input pin.
    */
-  void input_pullup()
+  void pullup()
     __attribute__((always_inline))
   {
-    input();
     high();
   }
 
@@ -76,6 +77,17 @@ public:
     __attribute__((always_inline))
   {
     GPIO_ATOMIC(SFR()->ddr |= MASK);
+  }
+
+  /**
+   * Open-collector pin. Use input() and output() to source and sink
+   * current.
+   */
+  void open_collector()
+    __attribute__((always_inline))
+  {
+    input();
+    low();
   }
 
   /**

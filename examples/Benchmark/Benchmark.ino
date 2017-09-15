@@ -20,8 +20,9 @@ void setup()
 {
   pinMode(LED_PIN, OUTPUT);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
+
   led.output();
-  button.input_pullup();
+  button.input().pullup();
   ss.output();
 }
 

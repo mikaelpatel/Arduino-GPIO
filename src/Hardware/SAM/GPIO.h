@@ -1,6 +1,6 @@
 /**
  * @file Hardware/SAM/GPIO.h
- * @version 1.0
+ * @version 1.1
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -32,26 +32,27 @@ class GPIO {
 public:
   GPIO()
   {
+    pmc_enable_periph_clk(ID_PIO());
     SFR()->PIO_PER = MASK;
   }
 
   /**
    * Set pin to input mode.
    */
-  void input()
+  GPIO<PIN>& input()
     __attribute__((always_inline))
   {
     SFR()->PIO_ODR = MASK;
-    SFR()->PIO_PUDR = MASK;
+    return (*this);
   }
 
   /**
-   * Set pin to input mode and activate internal pullup resistor.
+   * Used with input() to activate internal pullup resistor on
+   * input pin.
    */
-  void input_pullup()
+  void pullup()
     __attribute__((always_inline))
   {
-    SFR()->PIO_ODR = MASK;
     SFR()->PIO_PUER = MASK;
   }
 
@@ -62,7 +63,16 @@ public:
     __attribute__((always_inline))
   {
     SFR()->PIO_OER = MASK;
-    SFR()->PIO_PUER = MASK;
+  }
+
+  /**
+   * Open-collector pin.
+   */
+  void open_collector()
+    __attribute__((always_inline))
+  {
+    SFR()->PIO_CODR = MASK;
+    SFR()->PIO_MDER = MASK;
   }
 
   /**
@@ -72,8 +82,6 @@ public:
   bool read()
     __attribute__((always_inline))
   {
-    if (SFR()->PIO_OSR & MASK)
-      return ((SFR()->PIO_ODSR & MASK) != 0);
     return ((SFR()->PIO_PDSR & MASK) != 0);
   }
 
@@ -182,6 +190,18 @@ protected:
     case 2: return (PIOC);
     default:
       return (PIOD);
+    }
+  }
+
+  uint32_t ID_PIO()
+    __attribute__((always_inline))
+  {
+    switch (GPIO_REG(PIN)) {
+    case 0: return (ID_PIOA);
+    case 1: return (ID_PIOB);
+    case 2: return (ID_PIOC);
+    default:
+      return (ID_PIOD);
     }
   }
 };

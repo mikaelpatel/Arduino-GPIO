@@ -1,6 +1,6 @@
 /**
  * @file Hardware/SAM/Board.h
- * @version 1.0
+ * @version 1.1
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -31,7 +31,7 @@
  * Return port control register index from board pin value.
  * @return io port address
  */
-#define GPIO_REG(pin) (pin >> 8)
+#define GPIO_REG(pin) ((pin) >> 8)
 
 /**
  * Return pin mask from board pin value.

@@ -1,6 +1,6 @@
 /**
  * @file Board.h
- * @version 1.4
+ * @version 1.5
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -31,16 +31,16 @@
  * Return port control register address from board pin value.
  * @return io port address
  */
-#define GPIO_REG(pin) (pin >> 4)
+#define GPIO_REG(pin) ((pin) >> 4)
 
-/** Maximum port control register address for atomic instructions. */
-#define GPIO_ATOMIC_MAX GPIO_PIN(0x60,0)
+/** Maximum port control register address for atomic bit instructions. */
+#define GPIO_ATOMIC_MAX GPIO_PIN(0x40,0)
 
 /**
  * Return pin mask from board pin value.
  * @return pin mask
  */
-#define GPIO_MASK(pin) _BV(pin & 0xf)
+#define GPIO_MASK(pin) _BV((pin) & 0xf)
 
 #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
 /**
