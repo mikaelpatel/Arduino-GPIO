@@ -30,6 +30,9 @@
 template<BOARD::pin_t PIN>
 class GPIO {
 public:
+  /**
+   * Construct pin instance and initiate.
+   */
   GPIO()
   {
     pmc_enable_periph_clk(ID_PIO());
@@ -119,10 +122,7 @@ public:
   void toggle()
     __attribute__((always_inline))
   {
-    if (SFR()->PIO_ODSR & MASK)
-      SFR()->PIO_CODR = MASK;
-    else
-      SFR()->PIO_SODR = MASK;
+    write(!read());
   }
 
   /**
@@ -193,6 +193,10 @@ protected:
     }
   }
 
+  /**
+   * Return parallel input/output port identity.
+   * @return identity.
+   */
   uint32_t ID_PIO()
     __attribute__((always_inline))
   {
