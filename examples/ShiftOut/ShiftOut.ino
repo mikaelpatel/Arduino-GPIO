@@ -24,13 +24,16 @@ void loop()
 {
   uint8_t value = 0xaa;
 
-  // 103 us, 12 us per bit, 80 kHz
+  // 52 us, 2.08 us, 6.375 us, 160 kHz (Due)
+  // 103 us, 12 us, 80 kHz (Uno)
+  // 160 us, 19.75 us, 50 kHz (Mega)
   ss.toggle();
   shiftOut(DATA_PIN, CLOCK_PIN, LSBFIRST, value);
   ss.toggle();
   delayMicroseconds(100);
 
-  // 8 us, 1 us per bit, 1 MHz
+  // 4.79 us, 0.58 us, 1.7 MHz (Due)
+  // 8 us, 1 us, 1 MHz (Uno/Mega)
   ss.toggle();
   srpo << value;
   ss.toggle();

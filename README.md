@@ -12,7 +12,7 @@ template class may be used to construct additional libraries.
 This library supports boards based on SAM3X8E, ATmega168, ATmega328P,
 ATmega32U4, ATmega1280, ATmega2560, ATtinyX4 and ATtinyX5.
 
-Version: 1.8
+Version: 1.9
 
 ## Classes
 

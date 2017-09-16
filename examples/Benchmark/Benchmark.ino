@@ -6,14 +6,12 @@ GPIO<BOARD::D1> button;
 GPIO<BOARD::D2> ss;
 #define LED_PIN 0
 #define BUTTON_PIN 1
-#define SS_PIN 2
 #else
 GPIO<BOARD::D13> led;
 GPIO<BOARD::D12> button;
 GPIO<BOARD::D11> ss;
 #define LED_PIN 13
 #define BUTTON_PIN 12
-#define SS_PIN 11
 #endif
 
 void setup()
@@ -30,9 +28,9 @@ void loop()
 {
   // Benchmark#1: Read-write digital pin
   // 1.1 Arduino core digitalRead-digitalWrite
-  // 2.625 us, 5.313 us, 188 kHz (Due)
-  // 8.312 us, 16.81 us, 59 kHz (Uno)
-  // 13.56 us, 27.31 us, 37 kHz (Mega)
+  // 42.42 us, 2.625 us, 5.313 us, 188 kHz (Due)
+  // 135 us, 8.312 us, 16.81 us, 59 kHz (Uno)
+  // 221 us, 13.75 us, 27.69 us, 36 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     digitalWrite(LED_PIN, !digitalRead(LED_PIN));
@@ -42,8 +40,8 @@ void loop()
   delayMicroseconds(10);
 
   // 1.2 GPIO value and assignment operator
-  // 0.25 us, 0.4375 us, 2.3 MHz (Due)
-  // 0.4375 us, 0.9375 us, 1 MHz (Uno/Mega)
+  // 3.33 us, 0.25 us, 0.4375 us, 2.3 MHz (Due)
+  // 7.75 us, 0.5 us, 0.9375 us, 1 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     led = !led;
@@ -54,9 +52,9 @@ void loop()
 
   // Benchmark#2: Write digital pin
   // 2.1 Arduino core digitalWrite
-  // 2.125 us, 4.375 us, 229 kHz (Due)
-  // 4.312 us, 8.562 us, 117 kHz (Uno)
-  // 6.938 us, 14 us, 71.4 kHz (Mega)
+  // 35 us, 2.125 us, 4.375 us, 229 kHz (Due)
+  // 68.7 us, 4.25 us, 8.562 us, 117 kHz (Uno)
+  // 116 us, 7.2 us, 14 us, 70 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     digitalWrite(LED_PIN, 1);
@@ -66,8 +64,8 @@ void loop()
   delayMicroseconds(10);
 
   // 2.2 GPIO pin assignment operator
-  // 0.0625 us, 0.1875 us, 5.33 MHz (Due)
-  // 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
+  // 1.25 us, 0.0625 us, 0.1875 us, 5.33 MHz (Due)
+  // 4.188 us, 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     led = 1;
@@ -78,8 +76,8 @@ void loop()
 
 
   // 2.3 GPIO high and low
-  // 0.0625 us, 0.1875 us, 5.33 MHz (Due)
-  // 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
+  // 1.25 us, 0.0625 us, 0.1875 us, 5.33 MHz (Due)
+  // 4.188 us, 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     led.high();
@@ -89,8 +87,8 @@ void loop()
   delayMicroseconds(10);
 
   // 2.4 GPIO toggle (single)
-  // 0.1875 us, 0.375 us, 2.66 MHz (Due)
-  // 0.375 us, 0.75 us, 1.33 MHz (Uno/Mega)
+  // 3 us, 0.1875 us, 0.375 us, 2.66 MHz (Due)
+  // 6.188 us, 0.375 us, 0.75 us, 1.33 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 16; i++) {
     led.toggle();
@@ -99,8 +97,8 @@ void loop()
   delayMicroseconds(10);
 
   // 2.5 GPIO toggle (double)
-  // 0.125 us, 0.4375 us, 2.286 MHz (Due)
-  // 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
+  // 3.5 us, 0.125 us, 0.4375 us, 2.286 MHz (Due)
+  // 4.188 us, 0.125 us, 0.5 us, 2 MHz (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     led.toggle();
@@ -110,8 +108,8 @@ void loop()
   delayMicroseconds(10);
 
   // 2.6 GPIO toggle (unrolled)
-  // 0.1875 us, 0.3125 us, 3.2 MHz (Due)
-  // 0.125 us, 0.25 us, 4 MHz (Uno/Mega)
+  // 2.8 us, 0.1875 us, 0.3125 us, 3.2 MHz (Due)
+  // 2.125 us, 0.125 us, 0.25 us, 4 MHz (Uno/Mega)
   ss.high();
   led.toggle();
   led.toggle();
@@ -134,9 +132,9 @@ void loop()
 
   // Benchmark#3: Read digital pin
   // 3.1 Arduino core digitalRead
-  // 3.312 us, 5.5 us (Due)
-  // 8.062 us, 12.37 us (Uno)
-  // 13.31 us, 20.38 us (Mega)
+  // 44.17 us, 3.312 us, 5.5 us (Due)
+  // 99.19 us, 8.062 us, 12.37 us (Uno)
+  // 166 us, 13.56 us, 20.8 us (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     digitalWrite(LED_PIN, 1);
@@ -148,8 +146,8 @@ void loop()
   delayMicroseconds(10);
 
   // 3.2 GPIO pin value operator
-  // 0.0625 us, 0.125 us (Due)
-  // 0.1875 us, 0.5625 us (Uno/Mega)
+  // 1.292 us, 0.0625 us, 0.125 us (Due)
+  // 4.688 us, 0.1875 us, 0.5625 us (Uno/Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     led = 1;
@@ -179,7 +177,7 @@ void loop()
   ss.low();
 
   // 4.1 Arduino core digitalRead-digitalWrite
-  // 14 us, 28.25 us, 35 kHz (Mega)
+  // 225 us, 14 us, 28.25 us, 35 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     digitalWrite(DATA_PIN, !digitalRead(DATA_PIN));
@@ -189,7 +187,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.2 GPIO value and assignment operator
-  // 0.8125 us, 1.938 us, 516 kHz (Mega)
+  // 15.8 us, 0.8125 us, 1.938 us, 516 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     data = !data;
@@ -199,7 +197,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.3 Arduino core digitalWrite
-  // 7.3 us, 14.75 us, 68 kHz (Mega)
+  // 118 us, 7.3 us, 14.75 us, 68 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     digitalWrite(DATA_PIN, 1);
@@ -209,7 +207,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.4 GPIO pin assignment operator
-  // 0.5 us, 1.25, 800 kHz (Mega)
+  // 10.25 us, 0.5 us, 1.25, 800 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     data = 1;
@@ -219,7 +217,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.5 GPIO high and low
-  // 0.5 us, 1.25, 800 kHz (Mega)
+  // 10.25 us, 0.5 us, 1.25, 800 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     data.high();
@@ -229,7 +227,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.6 GPIO toggle (single)
-  // 0.75 us, 1.5, 667 kHz (Mega)
+  // 12.31 us, 0.75 us, 1.5, 667 kHz (Mega)
   ss.high();
   for (int i = 0; i < 16; i++) {
     data.toggle();
@@ -238,7 +236,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.7 GPIO toggle (double)
-  // 0.5 us, 1.25, 800 kHz (Mega)
+  // 10.25 us, 0.5 us, 1.25, 800 kHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     data.toggle();
@@ -248,7 +246,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.8 GPIO toggle (unrolled)
-  // 0.5 us, 1.25, 1 MHz (Mega)
+  // 8.2 us, 0.5 us, 1.25, 1 MHz (Mega)
   ss.high();
   data.toggle();
   data.toggle();
@@ -270,7 +268,7 @@ void loop()
   delayMicroseconds(10);
 
   // 4.9 Arduino core digitalRead
-  // 6.563 us, 6.938 us, 144 kHz (Mega)
+  // 56 us, 6.625 us, 7 us, 143 kHz (Mega)
   data.input();
   ss.high();
   for (int i = 0; i < 8; i++) {
@@ -282,7 +280,7 @@ void loop()
   ss.low();
 
   // 4.10 GPIO data value operator
-  // 0.25 us, 0.625, 1.6 MHz (Mega)
+  // 5.25 us, 0.25 us, 0.625, 1.6 MHz (Mega)
   ss.high();
   for (int i = 0; i < 8; i++) {
     led = 1;
