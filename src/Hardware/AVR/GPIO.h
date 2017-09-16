@@ -80,10 +80,9 @@ public:
   }
 
   /**
-   * Open-collector pin. Use input() and output() to source and sink
-   * current.
+   * Open-drain pin. Use input() for high and output() for low.
    */
-  void open_collector()
+  void open_drain()
     __attribute__((always_inline))
   {
     input();

@@ -69,9 +69,9 @@ public:
   }
 
   /**
-   * Open-collector pin.
+   * Open-drain pin. Use input() for high and output() for low.
    */
-  void open_collector()
+  void open_drain()
     __attribute__((always_inline))
   {
     SFR()->PIO_CODR = MASK;
