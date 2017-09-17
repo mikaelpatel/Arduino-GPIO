@@ -22,7 +22,7 @@ void setup()
 
 void loop()
 {
-  uint8_t value = 0xaa;
+  uint8_t value = 0xa5;
 
   // 52 us, 2.08 us, 6.375 us, 160 kHz (Due)
   // 103 us, 12 us, 80 kHz (Uno)

@@ -50,18 +50,22 @@ public:
   void operator>>(uint8_t& value)
   {
     if (BITORDER == LSBFIRST) {
-      for (uint8_t mask = 1; mask; mask <<= 1) {
+      uint8_t mask = 1;
+      do {
 	m_clock.toggle();
 	value |= (m_data ? mask : 0);
 	m_clock.toggle();
-      }
+	mask <<= 1;
+      } while (mask);
     }
     else {
-      for (uint8_t mask = 0x80; mask; mask >>= 1) {
+      uint8_t mask = 0x80;
+      do {
 	m_clock.toggle();
 	value |= (m_data ? mask : 0);
 	m_clock.toggle();
-      }
+	mask >>= 1;
+      } while (mask);
     }
   }
 

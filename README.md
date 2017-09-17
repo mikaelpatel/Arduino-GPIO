@@ -21,6 +21,7 @@ Version: 1.9
 * [SAM Board Configuration](./src/Hardware/SAM/Board.h)
 * [SAM General Purpose Input/Output, GPIO](./src/Hardware/SAM/GPIO.h)
 * [Shift Register Parallel Input, SRPI](./src/SRPI.h)
+* [Shift Register Parallel Input/Output, SRPIO](./src/SRPIO.h)
 * [Shift Register Parallel Output, SRPO](./src/SRPO.h)
 * [Software Serial, Software::Serial](./src/Software/Serial.h)
 
@@ -30,6 +31,7 @@ Version: 1.9
 * [Blink](./examples/Blink)
 * [Pulse](./examples/Pulse)
 * [ShiftIn](./examples/ShiftIn)
+* [ShiftInOut](./examples/ShiftInOut)
 * [ShiftOut](./examples/ShiftOut)
 * [SoftwareSerial](./examples/SoftwareSerial)
 
