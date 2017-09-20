@@ -46,7 +46,8 @@ shiftOut | 103/160 | srpo << val | 8 | 13/20
 
 ## Usage
 
-* [Digital Humidity and Temperature Sensors, DHT](https://github.com/mikaelpatel/Arduino-DHT)
 * [1-Wire Bus Manager and Device Driver Support, OWI](https://github.com/mikaelpatel/Arduino-OWI)
-* [Serial Peripheral Interface Bus Manager and Device Driver Support, SPI](https://github.com/mikaelpatel/Arduino-SPI)
+* [Digital Humidity and Temperature Sensors, DHT](https://github.com/mikaelpatel/Arduino-DHT)
 * [I2C Bus Manager and Device Driver Support, TWI](https://github.com/mikaelpatel/Arduino-TWI)
+* [Real-Time Clock Interface, RTC](https://github.com/mikaelpatel/Arduino-RTC)
+* [Serial Peripheral Interface Bus Manager and Device Driver Support, SPI](https://github.com/mikaelpatel/Arduino-SPI)
