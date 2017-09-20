@@ -16,9 +16,9 @@ Version: 1.9
 
 ## Classes
 
-* [AVR Board Configuration](./src/Hardware/AVR/Board.h)
+* [AVR Board Configuration, BOARD](./src/Hardware/AVR/Board.h)
 * [AVR General Purpose Input/Output, GPIO](./src/Hardware/AVR/GPIO.h)
-* [SAM Board Configuration](./src/Hardware/SAM/Board.h)
+* [SAM Board Configuration, BOARD](./src/Hardware/SAM/Board.h)
 * [SAM General Purpose Input/Output, GPIO](./src/Hardware/SAM/GPIO.h)
 * [Shift Register Parallel Input, SRPI](./src/SRPI.h)
 * [Shift Register Parallel Input/Output, SRPIO](./src/SRPIO.h)

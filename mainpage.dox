@@ -14,7 +14,7 @@ may be used to construct additional classes and libraries.
 This library supports boards based on SAM3X8E, ATmega168, ATmega328P,
 ATmega32U4, ATmega1280, ATmega2560, ATtinyX4 and ATtinyX5.
 
-Version: 1.10
+Version: 1.9
 */
 
 /** @page License
