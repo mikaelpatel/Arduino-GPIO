@@ -162,7 +162,7 @@ void loop()
 
   // Benchmark#4: GPIO atomic access of io ports with higher address
   // These benchmarks are for Arduino Mega pins that use ports above
-  // address 0x60 (PORTH, PORTJ, PINK and PINL). See Board.h.
+  // address 0x40 (PORTH, PORTJ, PINK and PINL). See Board.h.
   GPIO<BOARD::D6> data;
 #define DATA_PIN 6
 
