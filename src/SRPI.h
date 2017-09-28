@@ -45,15 +45,16 @@ public:
    * Return deserialized value according to the template bit order
    * parameter. Generates a positive clock pulse for each bit
    * transfer.
-   * @param[out] value from data input signal.
+   * @return read byte.
    */
-  void operator>>(uint8_t& value)
+  uint8_t read()
   {
+    uint8_t res = 0;
     if (BITORDER == LSBFIRST) {
       uint8_t mask = 1;
       do {
 	m_clock.toggle();
-	value |= (m_data ? mask : 0);
+	res |= (m_data ? mask : 0);
 	m_clock.toggle();
 	mask <<= 1;
       } while (mask);
@@ -62,11 +63,21 @@ public:
       uint8_t mask = 0x80;
       do {
 	m_clock.toggle();
-	value |= (m_data ? mask : 0);
+	res |= (m_data ? mask : 0);
 	m_clock.toggle();
 	mask >>= 1;
       } while (mask);
     }
+    return (res);
+  }
+
+  /**
+   * Serial input operator. Shorthand for read().
+   * @param[out] value from data input signal.
+   */
+  void operator>>(uint8_t& value)
+  {
+    value = read();
   }
 
 protected:

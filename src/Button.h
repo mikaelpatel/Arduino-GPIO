@@ -22,7 +22,7 @@
 #include "GPIO.h"
 
 /**
- * Debounced input pin template class using GPIO. Internal pullup
+ * Debounced Input Pin template class using GPIO. The internal pullup
  * resistor is used. The button/switch should be connected to ground.
  * @param[in] PIN board pin for input signal.
  */
@@ -30,10 +30,9 @@ template<BOARD::pin_t PIN>
 class Button {
 public:
   /**
-   * Construct debounced input pin (Button) instance with given
-   * template parameters. Initiate GPIO pins input mode with pullup
-   * resistor.
-   * @param[in] ms debouce time (Default 50 ms).
+   * Construct debounced input pin instance with given template
+   * parameters. Initiate GPIO pins input mode with pullup resistor.
+   * @param[in] ms debounce time limit (Default 50 ms).
    */
   Button(uint16_t ms = 50) :
     DEBOUNCE(ms),
@@ -44,18 +43,18 @@ public:
   }
 
   /**
-   * Return true(1) if button change was detected, otherwise false(0).
-   * Rising or falling edge is determined by reading the debounced pin
-   * state.
-   * @return true(1) if button change was detected, otherwise false(0).
+   * Return true(1) if a button state change was detected, otherwise
+   * false(0). Rising or falling edge is determined by reading the
+   * debounced pin state.
+   * @return bool.
    */
   bool ischanged()
   {
-    // Check debounce time has elapsed
+    // Check if debounce time limit has elapsed
     if (millis() - m_timestamp < DEBOUNCE) return (false);
     m_timestamp = millis();
 
-    // Check for pin state change
+    // Check for the pin state has changed
     bool state = m_pin;
     if (state == m_state) return (false);
     m_state = state;
@@ -100,7 +99,7 @@ protected:
   /** Timestamp for latest pin read. */
   uint16_t m_timestamp;
 
-  /** Latest pin read. */
+  /** Latest pin read; debounced pin state. */
   bool m_state;
 };
 

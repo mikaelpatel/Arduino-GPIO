@@ -23,9 +23,9 @@
 
 /**
  * Shift Register Parallel Output (SRPO) template class using GPIO.
+ * @param[in] BITORDER LSBFIRST or MSBFIRST.
  * @param[in] DATA_PIN board pin for data output signal.
  * @param[in] CLOCK_PIN board pin for clock output signal.
- * @param[in] BIT_ORDER LSBFIRST or MSBFIRST.
  */
 template<uint8_t BITORDER, BOARD::pin_t DATA_PIN, BOARD::pin_t CLOCK_PIN>
 class SRPO {
@@ -46,7 +46,7 @@ public:
    * parameter. Generate a positive clock pulse for each bit transfer.
    * @param[in] value to data output signal.
    */
-  void operator<<(uint8_t value)
+  void write(uint8_t value)
   {
     if (BITORDER == LSBFIRST) {
       uint8_t mask = 1;
@@ -66,6 +66,15 @@ public:
 	m_clock.toggle();
       } while (mask);
     }
+  }
+
+  /**
+   * Serial output operator. Shorthand for write().
+   * @param[in] value to data output signal.
+   */
+  void operator<<(uint8_t value)
+  {
+    write(value);
   }
 
 protected:

@@ -20,8 +20,8 @@
 #define HARDWARE_SAM_BOARD_H
 
 /**
- * Board pin values are bit-pointers and constructed from port control
- * register index and pin bit position.
+ * Board pin values are constructed from port control register index
+ * and pin bit position.
  * @param[in] index control register index.
  * @param[in] pin pin bit position in control register.
  */

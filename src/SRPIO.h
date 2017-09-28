@@ -47,7 +47,7 @@ public:
    * parameter. Generate a positive clock pulse for each bit transfer.
    * @param[in] value to data output signal.
    */
-  void operator<<(uint8_t value)
+  void write(uint8_t value)
   {
     if (BITORDER == LSBFIRST) {
       uint8_t mask = 1;
@@ -71,12 +71,21 @@ public:
   }
 
   /**
+   * Serial output operator. Shorthand for write().
+   * @param[in] value to data output signal.
+   */
+  void operator<<(uint8_t value)
+  {
+    write(value);
+  }
+
+  /**
    * Return deserialized value according to the template bit order
    * parameter. Generates a positive clock pulse for each bit
    * transfer.
-   * @param[out] value from data input signal.
+   * @return byte read from data input signal.
    */
-  void operator>>(uint8_t& value)
+  uint8_t read()
   {
     if (BITORDER == LSBFIRST) {
       uint8_t mask = 1;
@@ -96,6 +105,15 @@ public:
 	mask >>= 1;
       } while (mask);
     }
+  }
+
+  /**
+   * Serial input operator. Shorthand for read().
+   * @param[out] value from data input signal.
+   */
+  void operator>>(uint8_t& value)
+  {
+    value = read();
   }
 
 protected:

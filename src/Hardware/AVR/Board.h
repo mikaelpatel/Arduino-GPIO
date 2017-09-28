@@ -1,6 +1,6 @@
 /**
  * @file Board.h
- * @version 1.5
+ * @version 1.6
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -33,14 +33,34 @@
  */
 #define GPIO_REG(pin) ((pin) >> 4)
 
-/** Maximum port control register address for atomic bit instructions. */
-#define GPIO_ATOMIC_MAX GPIO_PIN(0x40,0)
-
 /**
  * Return pin mask from board pin value.
  * @return pin mask
  */
 #define GPIO_MASK(pin) _BV((pin) & 0xf)
+
+/** Maximum port control register address for atomic bit instructions. */
+#define GPIO_ATOMIC_MAX GPIO_PIN(0x40,0)
+
+/**
+ * Forces given expression to be atomic. Higher port addresses
+ * cannot be accessed with a single instruction and require
+ * disabling of interrupts to become atomic.
+ * @param[in] expr expression to be atomic.
+ */
+#define GPIO_ATOMIC(expr)					\
+  do {								\
+    if (PIN < GPIO_ATOMIC_MAX) {				\
+      expr;							\
+    }								\
+    else {							\
+      uint8_t sreg = SREG;					\
+      __asm__ __volatile__("cli" ::: "memory");			\
+      expr;							\
+      SREG = sreg;						\
+      __asm__ __volatile__("" ::: "memory");			\
+    }								\
+  } while (0)
 
 #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
 /**

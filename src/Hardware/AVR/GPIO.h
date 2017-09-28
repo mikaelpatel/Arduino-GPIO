@@ -1,6 +1,6 @@
 /**
  * @file Hardware/AVR/GPIO.h
- * @version 1.5
+ * @version 1.6
  *
  * @section License
  * Copyright (C) 2017, Mikael Patel
@@ -22,29 +22,9 @@
 #include "Hardware/AVR/Board.h"
 
 /**
- * Forces given expression to be atomic. Higher port addresses
- * cannot be accessed with a single instruction and require
- * disabling of interrupts to become atomic.
- * @param[in] expr expression to be atomic.
- */
-#define GPIO_ATOMIC(expr)					\
-  do {								\
-    if (PIN < GPIO_ATOMIC_MAX) {				\
-      expr;							\
-    }								\
-    else {							\
-      uint8_t sreg = SREG;					\
-      __asm__ __volatile__("cli" ::: "memory");			\
-      expr;							\
-      SREG = sreg;						\
-      __asm__ __volatile__("" ::: "memory");			\
-    }								\
-  } while (0)
-
-/**
  * General Purpose Digital I/O pin template class. Highly optimized
- * pin access. The PIN address is bit pointer to the port control
- * register and pin bit position. See Hardware/AVR/Board.h for details.
+ * pin access. The PIN address is a bit pointer to the port control
+ * register. See Hardware/AVR/Board.h for details.
  * @param[in] PIN board pin definition.
  */
 template<BOARD::pin_t PIN>

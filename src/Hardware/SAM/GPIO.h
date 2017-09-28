@@ -23,7 +23,7 @@
 
 /**
  * General Purpose Digital I/O pin template class. Highly optimized
- * pin access. The PIN address is the port control register index and
+ * pin access. The PIN address is a port control register index and
  * pin bit position. See Hardware/SAM/Board.h for details.
  * @param[in] PIN board pin definition.
  */

@@ -32,7 +32,7 @@ class Serial : public ::Stream {
 public:
   /**
    * Construct Output only Software Serial instance with
-   * given template parameters. Initiate GPIO transit pin
+   * given template parameters. Initiate GPIO transmit pin
    * to output mode and set default baudrate (57600 bps).
    */
   Serial() :
