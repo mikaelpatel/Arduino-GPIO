@@ -5,14 +5,15 @@ instruction and execute in 1-2 clock cycles. The library functions are
 more than 10 times faster than the Arduino digital pin functions. In
 some cases as much as 100 times faster.
 
-Additional support classes are available for Debounced Button, Shift
-Register Input/Output, and Software Serial. These also demonstrate how
-the GPIO template class may be used to construct additional libraries.
+Additional support classes are available for Debounced Button/Keypad,
+Shift Register Input/Output, and Software Serial. These also
+demonstrate how the GPIO template class may be used to construct
+additional libraries.
 
 This library supports boards based on SAM3X8E, ATmega168, ATmega328P,
 ATmega32U4, ATmega1280, ATmega2560, ATtinyX4 and ATtinyX5.
 
-Version: 1.10
+Version: 1.11
 
 ## Classes
 
@@ -20,7 +21,8 @@ Version: 1.10
 * [AVR General Purpose Input/Output, GPIO](./src/Hardware/AVR/GPIO.h)
 * [SAM Board Configuration, BOARD](./src/Hardware/SAM/Board.h)
 * [SAM General Purpose Input/Output, GPIO](./src/Hardware/SAM/GPIO.h)
-* [Debounced Input Pin, Button](./src/Button.h)
+* [Debounced Digital Pin, Button](./src/Button.h)
+* [Debounced Analog Pin, Keypad](./src/Keypad.h)
 * [Shift Register Parallel Input, SRPI](./src/SRPI.h)
 * [Shift Register Parallel Input/Output, SRPIO](./src/SRPIO.h)
 * [Shift Register Parallel Output, SRPO](./src/SRPO.h)
@@ -48,8 +50,9 @@ shiftOut | 103/160 | srpo << val | 8 | 13/20
 
 ## Usage
 
-* [Arduino-OWI](https://github.com/mikaelpatel/Arduino-OWI)
 * [Arduino-DHT](https://github.com/mikaelpatel/Arduino-DHT)
+* [Arduino-LCD](https://github.com/mikaelpatel/Arduino-LCD)
+* [Arduino-OWI](https://github.com/mikaelpatel/Arduino-OWI)
 * [Arduino-RTC](https://github.com/mikaelpatel/Arduino-RTC)
 * [Arduino-SPI](https://github.com/mikaelpatel/Arduino-SPI)
 * [Arduino-Storage](https://github.com/mikaelpatel/Arduino-Storage)
