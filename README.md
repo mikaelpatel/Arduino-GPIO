@@ -5,9 +5,9 @@ instruction and execute in 1-2 clock cycles. The library functions are
 more than 10 times faster than the Arduino digital pin functions. In
 some cases as much as 100 times faster.
 
-Additional support classes are available for Debounced Button/Keypad,
-Shift Register Input/Output, and Software Serial. These also
-demonstrate how the GPIO template class may be used to construct
+Additional support classes are available for Debounced Digital and
+Analog Pin, Shift Register Input/Output, and Software Serial. These
+also demonstrate how the GPIO template class may be used to construct
 additional libraries.
 
 This library supports boards based on SAM3X8E, ATmega168, ATmega328P,

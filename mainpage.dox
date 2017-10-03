@@ -6,11 +6,11 @@ instruction and execute in 1-2 clock cycles. The library functions are
 more than 10 times faster than the Arduino digital pin functions. In
 some cases as much as 100 times faster.
 
-Additional support classes are available for Debounced Button and Keypad,
-Shift Register Parallel Input and Output (SRPI, SRPO and SRPIO), and
-Serial (Software::Serial). These also demonstrate how the GPIO
-template class may be used to construct additional classes and
-libraries.
+Additional support classes are available for Debounced Digital
+(Button) and Analog Pin (Keypad), Shift Register Parallel Input and
+Output (SRPI, SRPO and SRPIO), and Serial (Software::Serial). These
+also demonstrate how the GPIO template class may be used to construct
+additional classes and libraries.
 
 This library supports boards based on SAM3X8E, ATmega168, ATmega328P,
 ATmega32U4, ATmega1280, ATmega2560, ATtinyX4 and ATtinyX5.
