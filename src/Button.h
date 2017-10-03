@@ -25,17 +25,16 @@
  * Debounced Input Pin template class using GPIO. The internal pullup
  * resistor is used. The button/switch should be connected to ground.
  * @param[in] PIN board pin for input signal.
+ * @param[in] DEBOUNCE time limit (Default 50 ms).
  */
-template<BOARD::pin_t PIN>
+template<BOARD::pin_t PIN, uint16_t DEBOUNCE = 50>
 class Button {
 public:
   /**
    * Construct debounced input pin instance with given template
    * parameters. Initiate GPIO pins input mode with pullup resistor.
-   * @param[in] ms debounce time limit (Default 50 ms).
    */
-  Button(uint16_t ms = 50) :
-    DEBOUNCE(ms),
+  Button() :
     m_timestamp(0),
     m_state(true)
   {
@@ -88,9 +87,6 @@ public:
   {
     return (m_timestamp);
   }
-
-  /** Debounce time in milli-seconds. */
-  const uint16_t DEBOUNCE;
 
 protected:
   /** Button pin. */
