@@ -20,6 +20,14 @@ GPIO<BOARD::D11> ss;
 uint32_t start, baseline;
 
 /**
+ * Calculate benchmark baseline.
+ */
+#define BASELINE()							\
+  Serial.flush();							\
+  start = micros();							\
+  for (int _i = 1; _i; _i--, baseline = micros() - start)
+
+/**
  * Benchmark support macros. Use in the form:
  * @code
  *   BENCHMARK("description") statement
@@ -49,9 +57,7 @@ void setup()
   ss.output();
 
   // Calculate baseline
-  Serial.flush();
-  start = micros();
-  for (int _i = 1; _i; _i--, baseline = micros() - start) {}
+  BASELINE();
 }
 
 void loop()
