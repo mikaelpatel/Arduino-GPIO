@@ -2,7 +2,9 @@
 #include "Button.h"
 
 #if defined(ARDUINO_attiny)
-Button<BOARD::D0> button;
+#include "Software/Serial.h"
+Software::Serial<BOARD::D0> Serial;
+Button<BOARD::D1> button;
 #else
 Button<BOARD::D7> button;
 #endif
