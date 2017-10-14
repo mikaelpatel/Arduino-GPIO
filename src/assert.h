@@ -20,7 +20,7 @@
 #define ASSERT_H
 
 /**
- * Trace support macros. Use in the form:
+ * Trace support macro. Used in the form:
  * @code
  *   TRACE(expr)
  * @endcode
@@ -36,9 +36,10 @@
     Serial.println(expr);						\
     Serial.flush();							\
   } while (0)
+#endif
 
 /**
- * Assert support macros. Use in the form:
+ * Assert support macro. Used in the form:
  * @code
  *   ASSERT(expr)
  * @endcode
@@ -58,5 +59,6 @@
       exit(0);								\
     }									\
   } while (0)
+#endif
 
 #endif
