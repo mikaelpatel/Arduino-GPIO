@@ -2,17 +2,19 @@
 #include "SRPO.h"
 #include "benchmark.h"
 
-SRPO<LSBFIRST, BOARD::D12, BOARD::D13> srpo;
-#define DATA_PIN 12
-#define CLOCK_PIN 13
+#include "Software/Serial.h"
+Software::Serial<BOARD::D0> Serial;
+SRPO<LSBFIRST, BOARD::D1, BOARD::D2> srpo;
+#define DATA_PIN 0
+#define CLOCK_PIN 1
 
 void setup()
 {
   Serial.begin(57600);
   while (!Serial);
+  BENCHMARK_BASELINE(1000);
   pinMode(DATA_PIN, OUTPUT);
   pinMode(CLOCK_PIN, OUTPUT);
-  BENCHMARK_BASELINE(1000);
 }
 
 void loop()

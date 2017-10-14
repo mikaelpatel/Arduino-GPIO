@@ -2,7 +2,9 @@
 #include "SRPIO.h"
 #include "benchmark.h"
 
-SRPIO<LSBFIRST, BOARD::D12, BOARD::D13> srpio;
+#include "Software/Serial.h"
+Software::Serial<BOARD::D0> Serial;
+SRPIO<LSBFIRST, BOARD::D1, BOARD::D2> srpio;
 
 void setup()
 {

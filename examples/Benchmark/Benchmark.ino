@@ -1,19 +1,10 @@
 #include "GPIO.h"
 #include "benchmark.h"
 
-#if defined(ARDUINO_attiny)
-#include "Software/Serial.h"
-Software::Serial<BOARD::D0> Serial;
-GPIO<BOARD::D1> led;
-GPIO<BOARD::D2> button;
-#define LED_PIN 1
-#define BUTTON_PIN 2
-#else
 GPIO<BOARD::D12> button;
 GPIO<BOARD::D13> led;
 #define BUTTON_PIN 12
 #define LED_PIN 13
-#endif
 
 void setup()
 {
@@ -86,7 +77,7 @@ void loop()
     led.low();
   }
 
-  BENCHMARK("2.8 GPIO toggle; assignment operator", 1000) {
+  BENCHMARK("2.8 GPIO toggle; assignment operator, HIGH/LOW", 1000) {
     led = HIGH;
     led = LOW;
   }
@@ -97,9 +88,9 @@ void loop()
 
 #ifdef PORTH
 
-  // Benchmark#4: GPIO atomic access of io ports with higher address
-  // These benchmarks are for Arduino Mega pins that use ports above
-  // address 0x40 (PORTH, PORTJ, PINK and PINL). See Board.h.
+  // GPIO atomic access of io ports with higher address. These
+  // benchmarks are for Arduino Mega pins that use ports above address
+  // 0x40 (PORTH, PORTJ, PINK and PINL). See Hardware/AVR/Board.h.
 
 #define DIN_PIN 6
 #define DOUT_PIN 7

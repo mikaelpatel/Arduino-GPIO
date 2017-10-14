@@ -1,7 +1,9 @@
 #include "GPIO.h"
 #include "Button.h"
 
-Button<BOARD::D7> button;
+#include "Software/Serial.h"
+Software::Serial<BOARD::D0> Serial;
+Button<BOARD::D1> button;
 
 void setup()
 {

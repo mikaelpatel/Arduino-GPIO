@@ -2,9 +2,11 @@
 #include "SRPI.h"
 #include "benchmark.h"
 
-SRPI<LSBFIRST, BOARD::D12, BOARD::D13> srpi;
-#define DATA_PIN 12
-#define CLOCK_PIN 13
+#include "Software/Serial.h"
+Software::Serial<BOARD::D0> Serial;
+SRPI<LSBFIRST, BOARD::D1, BOARD::D2> srpi;
+#define DATA_PIN 1
+#define CLOCK_PIN 2
 
 void setup()
 {

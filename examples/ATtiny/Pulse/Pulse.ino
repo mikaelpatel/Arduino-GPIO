@@ -1,6 +1,6 @@
 #include "GPIO.h"
 
-GPIO<BOARD::D13> led;
+GPIO<BOARD::D0> led;
 
 void setup()
 {
