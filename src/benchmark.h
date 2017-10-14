@@ -29,6 +29,7 @@ inline void noop() { __asm__ __volatile__("nop"); }
 
 /**
  * Calculate and set benchmark baseline. Should be called in setup().
+ * @param[in] scale number of block executions.
  */
 #define BENCHMARK_BASELINE(scale)					\
   Serial.flush();							\
@@ -46,6 +47,7 @@ inline void noop() { __asm__ __volatile__("nop"); }
  * typically 4 us (F_CPU is 16 MHz). Message strings are stored in
  * program memory.
  * @param[in] msg description of the benchmark.
+ * @param[in] scale number of block executions.
  */
 #define BENCHMARK(msg,scale)						\
   Serial.print(F(msg ": "));						\
