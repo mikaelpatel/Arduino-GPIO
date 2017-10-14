@@ -37,13 +37,13 @@ inline void noop() { __asm__ __volatile__("nop"); }
     for (int _j = scale; _j; _j--, noop())
 
 /**
- * Benchmark support macros. Use in the form:
+ * Benchmark support macro. Use in the form:
  * @code
  *   BENCHMARK("description") statement
  * @endcode
  * Prints description message and time to execute the statement in
  * micro-seconds. The maximum resolution depends on micros() and is
- * typically 4 us (F_CPU=16 MHz). Message strings are stored in
+ * typically 4 us (F_CPU is 16 MHz). Message strings are stored in
  * program memory.
  * @param[in] msg description of the benchmark.
  */
@@ -54,5 +54,17 @@ inline void noop() { __asm__ __volatile__("nop"); }
   for (int _i = 1; _i; _i--, _benchmark = micros() - _start - _baseline,\
 	 Serial.println(_benchmark / (float) scale, 3))			\
     for (int _j = scale; _j; _j--, noop())
+
+/**
+ * Execution time measurement support macro. Use in the form:
+ * @code
+ *   MEASURE(expr)
+ * @endcode
+ * Executes given expression and prints time to execute micro-
+ * seconds. The maximum resolution depends on micros() and is
+ * typically 4 us (F_CPU is 16 MHz).
+ * @param[in] expr expression to execute and measure.
+ */
+#define MEASURE(expr) BENCHMARK(#expr,1) expr
 
 #endif
