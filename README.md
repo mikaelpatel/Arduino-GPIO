@@ -10,8 +10,8 @@ Analog Pin, Shift Register Input/Output, and Software Serial. These
 also demonstrate how the GPIO template class may be used to construct
 additional libraries.
 
-This library supports boards based on SAM3X8E, ATmega168, ATmega328P,
-ATmega32U4, ATmega1280, ATmega2560, ATtinyX4 and ATtinyX5.
+This library supports boards based on ATtinyX4, ATtinyX5, ATmega168,
+ATmega328P, ATmega32U4, ATmega1280, ATmega2560 and SAM3X8E.
 
 Version: 1.11
 
@@ -39,14 +39,16 @@ Version: 1.11
 * [ShiftOut](./examples/ShiftOut)
 * [SoftwareSerial](./examples/SoftwareSerial)
 
+Benchmarks for [ATtiny](./examples/ATtiny).
+
 ## Benchmarks
 
-Wiring | us | GPIO | us | Xn (Uno/Mega)
+Wiring | us | GPIO | us | Xn (Due/Uno/Mega)
 ------ |---------------|------|----|--------------
-digitalRead | 3.75/6.19 | var = pin | 0.0625 | 60/99
-digitalWrite | 4.25/6.94 | pin = val | 0.125 | 34/56
-shiftIn | 85/147 | srpi >> var | 5 | 17/29
-shiftOut | 103/160 | srpo << val | 8 | 13/20
+digitalRead | 1.23/3.75/6.4 | var = pin | 0.0625/0.071 | 17/60/99
+digitalWrite | 2.30/4.25/7.2 | pin = val | 0.125/0.048 | 48/34/56
+shiftIn | 46/87/151 | srpi >> var | 4.8/4.6/4.6 | 9.6/19/32
+shiftOut | 53/104/161 | srpo << val | 5.7/7.9/7.9 | 9.3/13/20
 
 ## Usage
 
@@ -55,5 +57,5 @@ shiftOut | 103/160 | srpo << val | 8 | 13/20
 * [Arduino-OWI](https://github.com/mikaelpatel/Arduino-OWI)
 * [Arduino-RTC](https://github.com/mikaelpatel/Arduino-RTC)
 * [Arduino-SPI](https://github.com/mikaelpatel/Arduino-SPI)
-* [Arduino-Storage](https://github.com/mikaelpatel/Arduino-Storage)
 * [Arduino-TWI](https://github.com/mikaelpatel/Arduino-TWI)
+* [Arduino-Storage](https://github.com/mikaelpatel/Arduino-Storage)
