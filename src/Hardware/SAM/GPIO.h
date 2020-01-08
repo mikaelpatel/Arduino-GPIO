@@ -31,6 +31,13 @@ template<BOARD::pin_t PIN>
 class GPIO {
 public:
   /**
+   * Return the encapsulated pin
+   */
+  unsigned int pin() {
+    return (unsigned int) PIN;
+  }
+  
+  /**
    * Construct pin instance and initiate.
    */
   GPIO()
@@ -209,4 +216,5 @@ protected:
     }
   }
 };
+
 #endif

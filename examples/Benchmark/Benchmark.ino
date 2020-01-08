@@ -1,5 +1,6 @@
-#include "GPIO.h"
+#include "IGPIO.h"
 #include "benchmark.h"
+
 
 GPIO<BOARD::D12> button;
 GPIO<BOARD::D13> led;
@@ -163,4 +164,5 @@ void loop()
 
   Serial.println();
   delay(2000);
+  while(true) ;
 }

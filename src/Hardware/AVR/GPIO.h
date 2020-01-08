@@ -30,6 +30,14 @@
 template<BOARD::pin_t PIN>
 class GPIO {
 public:
+
+  /**
+   * Return the encapsulated pin
+   */
+  unsigned int pin() {
+    return (unsigned int) PIN;
+  }
+  
   /**
    * Set pin to input mode.
    */
@@ -190,4 +198,6 @@ protected:
   /** Pin bit position mask in control registers. */
   static const uint8_t MASK = GPIO_MASK(PIN);
 };
+
+
 #endif
