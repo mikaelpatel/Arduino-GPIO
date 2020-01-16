@@ -33,7 +33,7 @@ public:
   /**
    * Return the encapsulated pin
    */
-  unsigned int pin() {
+  unsigned int pin() const {
     return (unsigned int) PIN;
   }
   
@@ -49,7 +49,7 @@ public:
   /**
    * Set pin to input mode.
    */
-  GPIO<PIN>& input()
+  GPIO<PIN>& input() const
     __attribute__((always_inline))
   {
     SFR()->PIO_ODR = MASK;
@@ -60,7 +60,7 @@ public:
    * Used with input() to activate internal pullup resistor on
    * input pin.
    */
-  void pullup()
+  void pullup() const
     __attribute__((always_inline))
   {
     SFR()->PIO_PUER = MASK;
@@ -69,7 +69,7 @@ public:
   /**
    * Set pin to output mode.
    */
-  void output()
+  void output() const
     __attribute__((always_inline))
   {
     SFR()->PIO_OER = MASK;
@@ -78,7 +78,7 @@ public:
   /**
    * Open-drain pin. Use input() for high and output() for low.
    */
-  void open_drain()
+  void open_drain() const
     __attribute__((always_inline))
   {
     SFR()->PIO_CODR = MASK;
@@ -89,7 +89,7 @@ public:
    * Return current pin state.
    * @return state.
    */
-  bool read()
+  bool read() const
     __attribute__((always_inline))
   {
     return ((SFR()->PIO_PDSR & MASK) != 0);
@@ -99,7 +99,7 @@ public:
    * Return current pin state. Shorthand for read().
    * @return state.
    */
-  operator bool()
+  operator bool() const
     __attribute__((always_inline))
   {
     return (read());
@@ -108,7 +108,7 @@ public:
   /**
    * Set pin low(0). Shorthand for write(LOW).
    */
-  void low()
+  void low() const
     __attribute__((always_inline))
   {
     SFR()->PIO_CODR = MASK;
@@ -117,7 +117,7 @@ public:
   /**
    * Set pin high(1). Shorthand for write(HIGH).
    */
-  void high()
+  void high() const
     __attribute__((always_inline))
   {
     SFR()->PIO_SODR = MASK;
@@ -126,7 +126,7 @@ public:
   /**
    * Toggle pin state. Shorthand for write(!read()).
    */
-  void toggle()
+  void toggle() const
     __attribute__((always_inline))
   {
     write(!read());
@@ -137,7 +137,7 @@ public:
    * and zero value will set the pin LOW(0).
    * @param[in] value to set pin.
    */
-  void write(int value)
+  void write(int value) const
     __attribute__((always_inline))
   {
     if (value) high(); else low();
@@ -148,7 +148,7 @@ public:
    * and zero value will set the pin LOW(0). Shorthand for write(value).
    * @param[in] value to set pin.
    */
-  void operator=(int value)
+  void operator=(int value) const
     __attribute__((always_inline))
   {
     write(value);
@@ -159,7 +159,7 @@ public:
    * are disabled while generating the pulse.
    * @param[in] width in micro-seconds.
    */
-  void pulse(uint16_t width)
+  void pulse(uint16_t width) const
   {
     if (width == 0) return;
     toggle();
@@ -171,7 +171,7 @@ public:
    * Detect pulse and return width in micro-seconds.
    * @return width in micro-seconds.
    */
-  int pulse()
+  int pulse() const
   {
     bool s0 = read();
     while (read() == s0);
@@ -188,7 +188,7 @@ protected:
    * Return pointer to control registers.
    * @return pointer.
    */
-  Pio* SFR()
+  Pio* SFR() const
     __attribute__((always_inline))
   {
     switch (GPIO_REG(PIN)) {
@@ -204,7 +204,7 @@ protected:
    * Return parallel input/output port identity.
    * @return identity.
    */
-  uint32_t ID_PIO()
+  uint32_t ID_PIO() const
     __attribute__((always_inline))
   {
     switch (GPIO_REG(PIN)) {
