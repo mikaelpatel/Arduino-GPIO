@@ -1,43 +1,6 @@
-#include "GPIO.h"
+#include "IGPIO.h"
 #include "benchmark.h"
 
-/* 
- *  NANO GPIO
-16:06:16.704 -> 1.1 Arduino core digitalRead: 3.836
-16:06:16.704 -> 1.2 Arduino core digitalWrite(HIGH): 4.216
-16:06:16.704 -> 1.3 Arduino core digitalWrite(LOW): 4.088
-16:06:16.739 -> 1.4 Arduino core toggle; digitalRead-digitalWrite: 8.236
-16:06:16.739 -> 1.5 Arduino core toggle; digitalWrite: 8.304
-16:06:16.774 -> 2.1 GPIO pin value operator: 0.064
-16:06:16.774 -> 2.2 GPIO high member function: 0.128
-16:06:16.774 -> 2.3 GPIO low member function: 0.132
-16:06:16.774 -> 2.4 GPIO assignment HIGH: 0.132
-16:06:16.774 -> 2.5 GPIO assignment LOW: 0.132
-16:06:16.807 -> 2.6 GPIO toggle; value and assignment operator: 0.344
-16:06:16.807 -> 2.7 GPIO toggle; high and low member functions: 0.248
-16:06:16.807 -> 2.8 GPIO toggle; assignment operator, HIGH/LOW: 0.248
-16:06:16.807 -> 2.9 GPIO toggle member function: 0.124
-16:06:16.843 ->
-  
-  NANO VGPIO
-16:10:40.288 -> 1.1 Arduino core digitalRead: 3.836
-16:10:40.288 -> 1.2 Arduino core digitalWrite(HIGH): 4.216
-16:10:40.321 -> 1.3 Arduino core digitalWrite(LOW): 4.084
-16:10:40.321 -> 1.4 Arduino core toggle; digitalRead-digitalWrite: 8.236
-16:10:40.321 -> 1.5 Arduino core toggle; digitalWrite: 8.304
-16:10:40.356 -> 2.1 VGPIO pin value operator: 0.064
-16:10:40.356 -> 2.2 VGPIO high member function: 0.756
-16:10:40.356 -> 2.3 VGPIO low member function: 0.756
-16:10:40.390 -> 2.4 VGPIO assignment HIGH: 0.132
-16:10:40.390 -> 2.5 VGPIO assignment LOW: 0.132
-16:10:40.390 -> 2.6 VGPIO toggle; value and assignment operator: 1.356
-16:10:40.390 -> 2.7 VGPIO toggle; high and low member functions: 1.512
-16:10:40.424 -> 2.8 VGPIO toggle; assignment operator, HIGH/LOW: 0.256
-16:10:40.424 -> 2.9 VGPIO toggle member function: 0.756
-16:10:40.424 -> 
-
-
- */
 VGPIO<BOARD::D12> button;
 VGPIO<BOARD::D13> led;
 #define BUTTON_PIN 12

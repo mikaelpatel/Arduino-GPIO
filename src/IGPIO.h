@@ -46,108 +46,108 @@ class IGPIO {
     /**
      * Test if another IGPIO object uses the same pin.
      */
-    inline bool operator==(IGPIO &that) { return pin() == that.pin(); }
+    inline bool operator==(IGPIO &that) const { return pin() == that.pin(); }
 
     /**
      * Get the assigned pin.
      */
-    virtual unsigned int pin() = 0;
+    virtual unsigned int pin() const = 0;
 
     /**
      * Set pin to input mode.
      */
-    virtual void input() = 0;
+    virtual void input() const = 0;
 
     /**
      * Used with input() to activate internal pullup resistor on
      * input pin.
      */
-    virtual void pullup() = 0;
+    virtual void pullup() const = 0;
 
     /**
      * Set pin to output mode.
      */
-    virtual void output() = 0;
+    virtual void output() const = 0;
 
     /**
      * Open-drain pin. Use input() for high and output() for low.
      */
-    virtual void open_drain() = 0;
+    virtual void open_drain() const = 0;
 
     /**
      * Return current pin state.
      * @return state.
      */
-    virtual bool read() = 0;
+    virtual bool read() const = 0;
 
     /**
      * Return current pin state. Shorthand for read().
      * @return state.
      */
-    virtual operator bool() = 0;
+    virtual operator bool() const = 0;
 
     /**
      * Set pin low(0). Shorthand for write(LOW).
      */
-    virtual void low() = 0;
+    virtual void low() const = 0;
 
     /**
      * Set pin high(1). Shorthand for write(HIGH).
      */
-    virtual void high() = 0;
+    virtual void high() const = 0;
 
     /**
      * Toggle pin state. Shorthand for write(!read()).
      */
-    virtual void toggle() = 0;
+    virtual void toggle() const = 0;
 
     /**
      * Set pin to given state. Non-zero value will set the pin HIGH(1),
      * and zero value will set the pin LOW(0).
      * @param[in] value to set pin.
      */
-    virtual void write(int value) = 0;
+    virtual void write(int value) const = 0;
 
     /**
      * Set pin to given state. Non-zero value will set the pin HIGH(1),
      * and zero value will set the pin LOW(0). Shorthand for write(value).
      * @param[in] value to set pin.
      */
-    virtual void operator=(int value) = 0;
+    virtual void operator=(int value) const = 0;
 
     /**
      * Generate pulse with given width in micro-seconds. Interrupts
      * are disabled while generating the pulse.
      * @param[in] width in micro-seconds.
      */
-    virtual void pulse(uint16_t width) = 0;
+    virtual void pulse(uint16_t width) const = 0;
 
     /**
      * Detect pulse and return width in micro-seconds.
      * @return width in micro-seconds.
      */
-    virtual int pulse() = 0;
+    virtual int pulse() const = 0;
 };
 
 
 template<BOARD::pin_t PIN>
 class VGPIO : public IGPIO, public GPIO<PIN> {
   public:
-    inline bool operator==(IGPIO &that) { return pin() == that.pin(); }
-    unsigned int pin() { return GPIO<PIN>::pin(); }
-    void input() { GPIO<PIN>::input(); }
-    void pullup() { GPIO<PIN>::pullup(); }
-    void output() { GPIO<PIN>::output(); } 
-    void open_drain() { GPIO<PIN>::open_drain(); }
-    bool read() { return GPIO<PIN>::read(); }
-    operator bool() { return GPIO<PIN>::read(); }
-    void low() { GPIO<PIN>::low(); }
-    void high() { GPIO<PIN>::high(); }
-    void toggle() { GPIO<PIN>::toggle(); }
-    void write(int value)  { GPIO<PIN>::write(value); };
-    void operator=(int value)  { GPIO<PIN>::write(value); }
-    void pulse(uint16_t width) { GPIO<PIN>::pulse(width); }
-    int pulse() { return GPIO<PIN>::pulse(); }
+    inline bool operator==(IGPIO &that) const { return pin() == that.pin(); }
+    unsigned int pin() const { return GPIO<PIN>::pin(); }
+    void input() const { GPIO<PIN>::input(); }
+    void pullup() const { GPIO<PIN>::pullup(); }
+    void output() const { GPIO<PIN>::output(); } 
+    void open_drain() const { GPIO<PIN>::open_drain(); }
+    bool read() const { return GPIO<PIN>::read(); }
+    operator bool() const { return GPIO<PIN>::read(); }
+    void low() const { GPIO<PIN>::low(); }
+    void high() const { GPIO<PIN>::high(); }
+    void toggle() const { GPIO<PIN>::toggle(); }
+    void write(int value) const  { GPIO<PIN>::write(value); };
+    void operator=(int value) const  { GPIO<PIN>::write(value); }
+    void pulse(uint16_t width) const { GPIO<PIN>::pulse(width); }
+    int pulse() const { return GPIO<PIN>::pulse(); }
 
 };
 
